@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'semantic-ui-css/semantic.min.css';
+// This is where you import stuff like semantic-UI. I want to use Mantine
 import './index.css';
 import App from './pages/App/App';
 import * as serviceWorker from './serviceWorker';

@@ -20,9 +20,10 @@ function App() {
   }
 
   if (user) {
+    // If the user is logged in:
     return (
       <Routes>
-        <Route path="/" element={<h1>This is Home Page!</h1>} />
+        <Route path="/" element={<h1>My Games at a Glance</h1>} />
         <Route
           path="/login"
           element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}
@@ -35,6 +36,7 @@ function App() {
     );
   }
 
+  // If the user is not logged in:
   return (
     <Routes>
       <Route
