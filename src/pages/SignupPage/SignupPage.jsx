@@ -8,6 +8,10 @@ import { useForm } from '@mantine/form';
 import { TextInput, PasswordInput, Button, Box, Text, Container } from '@mantine/core';
 
 
+function isPasswordMatch(passwordOne, passwordConf) {
+  return passwordOne === passwordConf;
+}
+
 export default function SignUpPage({ handleSignUpOrLogin }) {
 
   // ------------- State Stuff -------------
@@ -31,6 +35,29 @@ export default function SignUpPage({ handleSignUpOrLogin }) {
     })
   }
 
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!isPasswordMatch(state.password, state.passwordConf)) return setError({ message: 'Passwords Must Match!', passwordError: true });
+    setError({ message: '', passwordError: false });
+    // We only learned formData so that's what I'm using I guess, even though I don't have an image included
+    const formData = new FormData();
+    for (let key in state) {
+      formData.append(key, state[key]);
+    }
+    console.log("Checking formData...",
+      formData.forEach((item) => console.log(item))
+    );
+    try {
+      await userService.signup(formData);
+      handleSignUpOrLogin();
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+      setError({ message: err.message, passwordError: false });
+    }
+  }
+
+
   // ------------- Mantine Form Stuff -------------
   const form = useForm({
     initialValues: { name: "", email: "", password: "", passwordConf: "" },
@@ -51,7 +78,7 @@ export default function SignUpPage({ handleSignUpOrLogin }) {
         <Text size="md" my="sm">One place to track what's going on in all your Pokemon games.</Text>
       </Container>
       <Container>
-        <form onSubmit={form.onSubmit(() => handleSignUpOrLogin)}>
+        <form onSubmit={handleSubmit}>
           <TextInput label="Name"
             placeholder="Name"
             onChange={handleChange}
