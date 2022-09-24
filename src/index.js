@@ -10,7 +10,7 @@ import { MantineProvider } from '@mantine/core';
 
 ReactDOM.render(
   <Router>
-    <MantineProvider withGlobalStyles withNormalizeCSS>
+    <MantineProvider withGlobalStyles withNormalizeCSS theme={{ colorScheme: 'dark' }}>
       <App />
     </MantineProvider>
   </Router >,

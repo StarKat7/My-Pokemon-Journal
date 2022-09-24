@@ -11,3 +11,5 @@ const gameSchema = new mongoose.Schema({
     tasksDone: Array,
     tasksToDo: Array
 })
+
+module.exports = mongoose.model('Game', gameSchema);
