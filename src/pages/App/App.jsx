@@ -26,7 +26,7 @@ function App() {
     return (
       <Routes>
         <Route path="/" element={<Home loggedInUser={user} handleLogout={handleLogout} />} />
-        <Route path="/game" element={<GamePage />} />
+        <Route path="/:gameTitle" element={<GamePage />} />
         <Route
           path="/login"
           element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}
