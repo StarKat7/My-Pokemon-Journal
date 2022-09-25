@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
+import Home from "../Home/Home";
 import userService from "../../utils/userService";
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
     // If the user is logged in:
     return (
       <Routes>
-        <Route path="/" element={<h1>My Games at a Glance</h1>} />
+        <Route path="/" element={<Home loggedInUser={user} />} />
         <Route
           path="/login"
           element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}

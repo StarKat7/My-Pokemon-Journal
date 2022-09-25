@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import { Button, Form, Grid, Header, Image, Segment } from "semantic-ui-react";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage/ErrorMessage";
+import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
 import userService from "../../utils/userService";
 import { useNavigate } from "react-router-dom";
 
@@ -73,10 +73,10 @@ export default function SignUpPage({ handleSignUpOrLogin }) {
       verticalAlign="middle"
     >
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as="h1" color="teal" textAlign="center">My Pokemon Journal</Header>
+        <Header as="h1" color="purple" textAlign="center">My Pokemon Journal</Header>
         <Header>A place to keep track of what's going on in all your Pokemon games.</Header>
         <br />
-        <Header as="h2" color="teal" textAlign="center">
+        <Header as="h2" color="purple" textAlign="center">
         Sign Up
         </Header>
         <Form onSubmit={handleSubmit}>

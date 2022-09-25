@@ -42,6 +42,7 @@ async function signup(req, res) {
     const user = new User({ ...req.body, photoUrl: data.Location });
     try {
       await user.save();
+      console.log("Successfully saved user to database.")
       const token = createJWT(user);
       res.json({ token }); // shorthand for the below
       // res.json({ token: token })
