@@ -1,18 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// This is where you import stuff like semantic-UI. I want to use Mantine
+import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 import App from './pages/App/App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { MantineProvider } from '@mantine/core';
+
 
 ReactDOM.render(
   <Router>
-    <MantineProvider withGlobalStyles withNormalizeCSS theme={{ colorScheme: 'dark' }}>
-      <App />
-    </MantineProvider>
+    <App />
   </Router >,
   document.getElementById('root')
 );

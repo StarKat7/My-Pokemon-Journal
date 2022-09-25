@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-
+import { Button, Form, Grid, Header, Image, Segment } from "semantic-ui-react";
 import userService from "../../utils/userService";
 import { useNavigate } from "react-router-dom";
-
-import { useForm } from '@mantine/form';
-import { TextInput, PasswordInput, Button, Box, Text, Container } from '@mantine/core';
 
 
 function isPasswordMatch(passwordOne, passwordConf) {
@@ -27,6 +24,8 @@ export default function SignUpPage({ handleSignUpOrLogin }) {
     passwordConf: "",
   });
 
+  const [selectedFile, setSelectedFile] = useState("");
+
   // ------------- Handlers -------------
   function handleChange(e) {
     setState({
@@ -35,12 +34,16 @@ export default function SignUpPage({ handleSignUpOrLogin }) {
     })
   }
 
+  const navigate = useNavigate();
+
   async function handleSubmit(e) {
     e.preventDefault();
     if (!isPasswordMatch(state.password, state.passwordConf)) return setError({ message: 'Passwords Must Match!', passwordError: true });
     setError({ message: '', passwordError: false });
     // We only learned formData so that's what I'm using I guess, even though I don't have an image included
+    //Why did I make things harder for myself by getting rid of AWS and semantic? I should've just used what we started with...
     const formData = new FormData();
+    formData.append("photo", selectedFile);
     for (let key in state) {
       formData.append(key, state[key]);
     }
@@ -57,57 +60,75 @@ export default function SignUpPage({ handleSignUpOrLogin }) {
     }
   }
 
-
-  // ------------- Mantine Form Stuff -------------
-  const form = useForm({
-    initialValues: { name: "", email: "", password: "", passwordConf: "" },
-
-    validate: {
-      name: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
-      confirmPassword: (value, values) =>
-        value !== values.password ? 'Passwords did not match' : null,
-    },
-  });
+  function handleFileInput(e) {
+    console.log(e.target.files, " < - this is e.target.files!");
+    setSelectedFile(e.target.files[0]);
+  }
 
   // ------------- Here's the return -------------
   return (
-    <Box sx={{ maxWidth: 450 }} mx="auto" my="auto" color="grey">
-      <Container sx={{ maxWidth: 400 }}>
-        <Text mt="sm" align="center" size="xl" weight={700} my="sm">My Pokemon Journal</Text>
-        <Text size="md" my="sm">One place to track what's going on in all your Pokemon games.</Text>
-      </Container>
-      <Container>
-        <form onSubmit={handleSubmit}>
-          <TextInput label="Name"
-            placeholder="Name"
-            onChange={handleChange}
-            {...form.getInputProps('name')} />
-          <TextInput
-            mt="sm"
-            label="Email"
-            placeholder="Email"
-            onChange={handleChange}
-            {...form.getInputProps('email')} />
-          <PasswordInput
-            mt="sm"
-            label="Password"
-            placeholder="Password"
-            onChange={handleChange}
-            {...form.getInputProps('password')} />
-          <PasswordInput
-            mt="sm"
-            label="Confirm Password"
-            placeholder="Password"
-            onChange={handleChange}
-            {...form.getInputProps('passwordConf')} />
-          <Container align="center">
-            <Button type="submit" mt="sm" my="md">
-              Submit
+    <Grid
+      textAlign="center"
+      style={{ height: "100vh", width: "100vw" }}
+      verticalAlign="middle"
+    >
+      <Grid.Column style={{ maxWidth: 450 }}>
+        <Header as="h1" color="teal" textAlign="center">My Pokemon Journal</Header>
+        <Header>A place to keep track of what's going on in all your Pokemon games.</Header>
+        <br />
+        <Header as="h2" color="teal" textAlign="center">
+        Sign Up
+        </Header>
+        <Form onSubmit={handleSubmit}>
+          <Segment stacked>
+            <Form.Input
+              name="username"
+              placeholder="username"
+              value={state.username}
+              onChange={handleChange}
+              required
+            />
+            <Form.Input
+              type="email"
+              name="email"
+              placeholder="email"
+              value={state.email}
+              onChange={handleChange}
+              required
+            />
+            <Form.Input
+              error={error.passwordError}
+              name="password"
+              type="password"
+              placeholder="password"
+              value={state.password}
+              onChange={handleChange}
+              required
+            />
+            <Form.Input
+              error={error.passwordError}
+              name="passwordConf"
+              type="password"
+              placeholder="Confirm Password"
+              value={state.passwordConf}
+              onChange={handleChange}
+              required
+            />
+            <Form.Field>
+              <Form.Input
+                type="file"
+                name="photo"
+                placeholder="upload image"
+                onChange={handleFileInput}
+              />
+            </Form.Field>
+            <Button type="submit" className="btn">
+              Signup
             </Button>
-          </Container>
-        </form>
-      </Container>
-    </Box>
+          </Segment>
+          {error.message ? <ErrorMessage error={error.message} /> : null}
+        </Form>
+      </Grid.Column>
+    </Grid>
   );
 }
