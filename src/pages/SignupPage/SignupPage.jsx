@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage/ErrorMessage";
-import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
+import { Button, Form, Grid, Header, Segment, Message } from "semantic-ui-react";
 import userService from "../../utils/userService";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 
 function isPasswordMatch(passwordOne, passwordConf) {
@@ -128,6 +128,9 @@ export default function SignUpPage({ handleSignUpOrLogin }) {
           </Segment>
           {error.message ? <ErrorMessage error={error.message} /> : null}
         </Form>
+        <Message>
+            Already have an account? <Link to="/login">Login</Link>
+          </Message>
       </Grid.Column>
     </Grid>
   );
