@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const gamesCtrl = require('../../controllers/games');
-const game = require('../../models/game');
+
 
 /*---------- Public Routes ----------*/
 // There aren't any since you can't see games at all if you aren't logged in
