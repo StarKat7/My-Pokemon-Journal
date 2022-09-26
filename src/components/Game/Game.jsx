@@ -1,15 +1,33 @@
 import React from "react";
+import { Card, Image, Divider } from "semantic-ui-react";
 
-export default function GameComponent(props) {
+export default function GameComponent({ game }) {
     return (
-        <>
-        <h1>Game component rendering</h1>
-        <h2>Title</h2>
-        <h2>Cover art goes here</h2>
-        <h2>Generation</h2>
-        <h2>Platform</h2>
-        <h2>Tasks Done</h2>
-        <h2>Tasks to Do</h2>
-        </>
+        <Card>
+            <Card.Content>
+                <Card.Header>{game.gameTitle}</Card.Header>
+            </Card.Content>
+            <Card.Content>
+                <Image src={game.coverUrl} />
+                <p>Generation {game.gen}</p>
+                <p>Platform: {game.platform}</p>
+            </Card.Content>
+            <Card.Content>
+                <Card.Header>
+                    Tasks to Do
+                </Card.Header>
+            </Card.Content>
+            <Card.Content>
+                {/* The To Dos will go here */}
+            </Card.Content>
+            <Card.Content>
+                <Card.Header>
+                    Tasks Done
+                </Card.Header>
+            </Card.Content>
+            <Card.Content>
+                {/* The Dones will go here */}
+            </Card.Content>
+        </Card>
     )
 }

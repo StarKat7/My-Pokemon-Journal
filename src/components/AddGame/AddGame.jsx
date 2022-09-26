@@ -53,6 +53,7 @@ export default function AddGame({ handleAddGame }) {
     }
 
 
+    // ------------- The Return -------------
     return (
         <Card>
             <Card.Content header='Add New Game' textAlign="center" />

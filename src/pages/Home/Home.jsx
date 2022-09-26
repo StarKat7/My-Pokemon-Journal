@@ -29,6 +29,7 @@ export default function Home({ loggedInUser, handleLogout }) {
             setLoading(false);
         }
     }
+    // Okay this is working now there was an aws thing that was getting in the way?? Now I need to give the games to the childe components that need them
 
     // Here's the useEffect
     useEffect(() => {
@@ -66,7 +67,7 @@ export default function Home({ loggedInUser, handleLogout }) {
                 </Grid.Row>
                 <Grid.Row>
                     <Grid.Column textAlign="center">
-                        <GameGallery />
+                        <GameGallery games={games} />
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
