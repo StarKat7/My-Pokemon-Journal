@@ -21,3 +21,7 @@ export function create(game) {
         })
     });
 }
+
+export function getGames() {
+    // Okay so I need to grab ONLY the games that belong to the user... Okay so I specify that in the controllers...? Do I have to do it in the users controller or in the games controller? ...I think in users?
+}

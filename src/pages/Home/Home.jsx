@@ -15,7 +15,20 @@ export default function Home({ loggedInUser, handleLogout }) {
 
     // ------------- UseEffect -------------
     // This needs to render upon mount, and then render again whenever a new game is added by the user. This will be covering the R in CRUD
-    
+
+
+    // This is the getGames function that will be used by the useEffect
+    async function getGames() {
+        try {
+            const response = await gamesAPI.getGames(); // Initiating the GET request, on to gamesApi in utils for the fetch part
+            console.log(response, "<- the data");
+            setGames([...response.data]);
+            setLoading(false);
+        } catch(err) {
+            console.log(err.message, "Issues in getGames");
+            setLoading(false);
+        }
+    }
 
     // ------------- Handlers -------------
     // So this is the function for adding a game that will be passed down to the AddGame component... This will cover the C in CRUD

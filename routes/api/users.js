@@ -9,7 +9,8 @@ router.post('/signup', upload.single('photo'), usersCtrl.signup);
 router.post('/login', usersCtrl.login);
 
 /*---------- Protected Routes ----------*/
-
+// This is the route that calls the function that grabs all the user's games
+router.get('/', usersCtrl.userGames);
 
 
 

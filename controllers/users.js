@@ -1,9 +1,11 @@
 const User = require('../models/user');
+const Game = require('../models/game');
 const jwt = require('jsonwebtoken');
 const S3 = require("aws-sdk/clients/s3");
 const s3 = new S3(); // initate the S3 constructor which can talk to aws/s3 our bucket!
 // import uuid to help generate random names
 const { v4: uuidv4 } = require("uuid");
+const { ConfigurationServicePlaceholders } = require('aws-sdk/lib/config_service_placeholders');
 // since we are sharing code, when you pull you don't want to have to edit the
 // the bucket name, thats why we're using an environment variable
 const BUCKET_NAME = process.env.AWS_BUCKET_NAME;
@@ -13,8 +15,29 @@ const SECRET = process.env.SECRET;
 
 module.exports = {
   signup,
-  login
+  login,
+  userGames
 };
+
+async function userGames(req, res) {
+  try {
+    // So to get the logged-in user I use req.user._id?
+    const user = await User.findOne({ user: req.user._id });
+    if (!user) return res.status(404).json({ error: "Something's gone wrong in userGames, check it in controllers/users.js" })
+    // Now I find the user's games...
+    // I put user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'} in the Game model so that should apply here
+    const games = await Game.find({ user: user._id }).populate("user").exec();
+    res.status(200).json({
+      data: {
+        user: user,
+        games: games
+      }
+    });
+  } catch (err) {
+    console.log(err.message, " <- this error is occurring in the userGames function in the users controller");
+    res.status(400).json({ error: "Something went wrong..." });
+  }
+}
 
 async function signup(req, res) {
   console.log(req.body, " req.body in signup", req.file);
