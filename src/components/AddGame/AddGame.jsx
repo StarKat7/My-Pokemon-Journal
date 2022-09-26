@@ -57,11 +57,14 @@ export default function AddGame(props) {
         <Card>
             <Card.Content header='Add New Game' textAlign="center" />
             <Card.Content textAlign="left">
-                <Dropdown
+                {/* <Dropdown
                     placeholder="Select Game"
                     fluid
                     selection options={gameOptions}
-                />
+                /> */}
+                <Form>
+                    
+                </Form>
                 <p>Game Title, this is where the user will select the game from a dropdown and most of the other slots will be filled in automatically</p>
                 <p>Cover Art Here</p>
                 <p>Generation</p>

@@ -8,8 +8,8 @@ const gameSchema = new mongoose.Schema({
     gen: Number,
     coverUrl: String,
     platform: String,
-    tasksDone: Array,
-    tasksToDo: Array
+    tasksDone: [{type: mongoose.Schema.Types.ObjectId, ref: 'Task'}],
+    tasksToDo: [{type: mongoose.Schema.Types.ObjectId, ref: 'Task'}]
 })
 
 module.exports = mongoose.model('Game', gameSchema);
