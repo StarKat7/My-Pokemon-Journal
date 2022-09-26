@@ -1,3 +1,8 @@
+## My Pokemon Journal
+
+Collecting Pokemon(and the games they're in) is loads of fun, but sometimes you just need a break. This app allows you to keep track of what you were doing in your games so you can get right back to the fun when you return.
+
+
 ## README Requirements
 Don't underestimate the value of a well crafted README.md.
 
