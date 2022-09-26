@@ -3,7 +3,7 @@ import PageHeader from "../../components/Header/Header";
 import { Header, Divider, Grid } from "semantic-ui-react"
 import AddGame from "../../components/AddGame/AddGame";
 import GameGallery from "../../components/GameGallery/GameGallery";
-import gamesAPI from "../../utils/gamesApi";
+import * as gamesAPI from "../../utils/gamesApi";
 
 export default function Home({ loggedInUser, handleLogout }) {
 
@@ -21,8 +21,13 @@ export default function Home({ loggedInUser, handleLogout }) {
     async function handleAddGame(game) {
         try {
             setLoading(true);
-            const response = await gamesAPI.create(game);
-        } catch(err) {
+            const response = await gamesAPI.create(game); // Here we make the API call, head over to utils/gamesApi to see what happens next
+            // If it comes back successfully we then use setGames with the new response.data at the top
+            console.log(response);
+            setGames([response.data, ...games]);
+            // And we turn off loading
+            setLoading(false);
+        } catch (err) {
             console.log("Error in the handleAddGame function: ", err);
         }
     }
@@ -36,7 +41,7 @@ export default function Home({ loggedInUser, handleLogout }) {
             <Grid centered>
                 <Grid.Row>
                     {/* I want this to be accordion and/or have dropdown but first I need to make sure the API calls work for it */}
-                    <AddGame />
+                    <AddGame handleAddGame={handleAddGame} />
                 </Grid.Row>
                 <Grid.Row>
                     <Grid.Column textAlign="center">
