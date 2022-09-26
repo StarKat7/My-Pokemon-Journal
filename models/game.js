@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const gameSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     gameTitle: String,
-    gen: Number,
+    gen: String,
     coverUrl: String,
     platform: String,
     tasksDone: [{type: mongoose.Schema.Types.ObjectId, ref: 'Task'}],

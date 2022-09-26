@@ -10,4 +10,6 @@ const gamesCtrl = require('../../controllers/games');
 // Hitting this route calls the create function over in controllers/games
 router.post('/', gamesCtrl.create); 
 // And hitting this one calls the index function
-router.get('/', gamesCtrl.index);
+// router.get('/', gamesCtrl.index);
+
+module.exports = router;

@@ -49,6 +49,7 @@ export default function AddGame({ handleAddGame }) {
         const requestData = gameForm;
         // Put the handleAddGame here, may define in a parent and pass it down
         // Actually yeah I need the Home page to rerender when the game is added so define handleAddGame() above and then pass it down to here
+        handleAddGame(requestData); // This is what gets sent over to the server, remember that handleAddGame is calling a function from the gamesAPI util
     }
 
 
@@ -62,7 +63,7 @@ export default function AddGame({ handleAddGame }) {
                     selection options={gameOptions}
                 />
                 I'll get to you later, once I know the form works. */}
-                <Form>
+                <Form onSubmit={handleSubmit}>
                     <Form.Input
                         name="title"
                         value={gameForm.title}

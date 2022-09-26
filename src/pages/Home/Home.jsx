@@ -15,6 +15,7 @@ export default function Home({ loggedInUser, handleLogout }) {
 
     // ------------- UseEffect -------------
     // This needs to render upon mount, and then render again whenever a new game is added by the user. This will be covering the R in CRUD
+    
 
     // ------------- Handlers -------------
     // So this is the function for adding a game that will be passed down to the AddGame component... This will cover the C in CRUD
