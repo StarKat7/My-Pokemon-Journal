@@ -9,7 +9,7 @@ const gamesCtrl = require('../../controllers/games');
 /*---------- Protected Routes ----------*/
 // Hitting this route calls the create function over in controllers/games
 router.post('/', gamesCtrl.create); 
-// And hitting this one calls the index function
-// router.get('/', gamesCtrl.index);
+// And hitting this one calls the userGames function
+router.get('/', gamesCtrl.userGames);
 
 module.exports = router;

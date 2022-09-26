@@ -24,4 +24,16 @@ export function create(game) {
 
 export function getGames() {
     // Okay so I need to grab ONLY the games that belong to the user... Okay so I specify that in the controllers...? Do I have to do it in the users controller or in the games controller? ...I think in users?
+    return fetch(BASE_URL, {
+        headers: {
+            Authorization: "Bearer " + tokenService.getToken()
+        }
+    }).then((res) => {
+        if(res.ok) return res.json();
+
+        return res.json().then(response => {
+            console.log("Uh oh, this error log comes from gamesApi.js", response);
+            throw new Error(response.err);
+        })
+    })
 }

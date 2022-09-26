@@ -19,25 +19,7 @@ module.exports = {
   userGames
 };
 
-async function userGames(req, res) {
-  try {
-    // So to get the logged-in user I use req.user._id?
-    const user = await User.findOne({ user: req.user._id });
-    if (!user) return res.status(404).json({ error: "Something's gone wrong in userGames, check it in controllers/users.js" })
-    // Now I find the user's games...
-    // I put user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'} in the Game model so that should apply here
-    const games = await Game.find({ user: user._id }).populate("user").exec();
-    res.status(200).json({
-      data: {
-        user: user,
-        games: games
-      }
-    });
-  } catch (err) {
-    console.log(err.message, " <- this error is occurring in the userGames function in the users controller");
-    res.status(400).json({ error: "Something went wrong..." });
-  }
-}
+
 
 async function signup(req, res) {
   console.log(req.body, " req.body in signup", req.file);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageHeader from "../../components/Header/Header";
 import { Header, Divider, Grid } from "semantic-ui-react"
 import AddGame from "../../components/AddGame/AddGame";
@@ -16,12 +16,12 @@ export default function Home({ loggedInUser, handleLogout }) {
     // ------------- UseEffect -------------
     // This needs to render upon mount, and then render again whenever a new game is added by the user. This will be covering the R in CRUD
 
-
     // This is the getGames function that will be used by the useEffect
     async function getGames() {
         try {
             const response = await gamesAPI.getGames(); // Initiating the GET request, on to gamesApi in utils for the fetch part
             console.log(response, "<- the data");
+            // And we're back wih the data from the fetch
             setGames([...response.data]);
             setLoading(false);
         } catch(err) {
@@ -29,6 +29,12 @@ export default function Home({ loggedInUser, handleLogout }) {
             setLoading(false);
         }
     }
+
+    // Here's the useEffect
+    useEffect(() => {
+        // Getting the games, C(R)UD
+        getGames();
+    }, [])
 
     // ------------- Handlers -------------
     // So this is the function for adding a game that will be passed down to the AddGame component... This will cover the C in CRUD
