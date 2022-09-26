@@ -24,7 +24,7 @@ export default function Home({ loggedInUser, handleLogout }) {
             // And we're back wih the data from the fetch
             setGames([...response.data]);
             setLoading(false);
-        } catch(err) {
+        } catch (err) {
             console.log(err.message, "Issues in getGames");
             setLoading(false);
         }
@@ -34,7 +34,8 @@ export default function Home({ loggedInUser, handleLogout }) {
     useEffect(() => {
         // Getting the games, C(R)UD
         getGames();
-    }, [])
+    }, []); // So this will run once the Home component loads
+
 
     // ------------- Handlers -------------
     // So this is the function for adding a game that will be passed down to the AddGame component... This will cover the C in CRUD

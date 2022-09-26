@@ -4,8 +4,8 @@ const jwt = require('jsonwebtoken');
 const S3 = require("aws-sdk/clients/s3");
 const s3 = new S3(); // initate the S3 constructor which can talk to aws/s3 our bucket!
 // import uuid to help generate random names
+// wtf was that aws placeholder thing? Why was it breaking my app? The data is actually coming through now!
 const { v4: uuidv4 } = require("uuid");
-const { ConfigurationServicePlaceholders } = require('aws-sdk/lib/config_service_placeholders');
 // since we are sharing code, when you pull you don't want to have to edit the
 // the bucket name, thats why we're using an environment variable
 const BUCKET_NAME = process.env.AWS_BUCKET_NAME;
@@ -15,8 +15,7 @@ const SECRET = process.env.SECRET;
 
 module.exports = {
   signup,
-  login,
-  userGames
+  login
 };
 
 
