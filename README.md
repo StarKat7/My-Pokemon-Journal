@@ -1,39 +1,20 @@
-## Setup 
+## README Requirements
+Don't underestimate the value of a well crafted README.md.
 
-1. Clone the repo
-2. Rename the folder to your Project, you can use the `mv` command like `mv mern-boilerplate yourprojectname`
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+The README.md introduces your project to prospective employers and forms their first impression of your work!
 
+Note: Do not include project planning (user stories, wireframes or ERDs) in the README.md.
 
-#### Setup your git repo
+Include the following sections within the README.md:
 
-1. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-2.  Then follow the directions on github that says ```…or create a new repository on the command line```
+## ☐ App Title: Contains a description of what the app does and optional background info.
 
-it should look like this
+## ☐ Screenshot(s): A screenshot of your app's landing page and any other screenshots of interest.
 
-```
-git init
-git add .
-git commit -m "first commit"
-git remote add origin git@git.generalassemb.ly:SEI-CC/test.git // this will be whatever your address will be
-git push -u origin master
-```
+## ☐ Technologies Used: List of the technologies used.
 
-#### Setup the App
+## ☐ Getting Started: That Includes:
 
-```npm install```
-
-*DOTENV*
-
-`touch .env`
-
-add your variables
-
-```
-DATABASE_URL=mongodb://localhost:27017/testagramV2
-BUCKET_NAME=catcollectorone
-SECRET=mysecretforjwt
-```
-
-The app is configured, to use those respective key names for the database, jwt secret and aws bucket, of course you'll have your own values
+* A link to the deployed app (Heroku)
+* A link to the Trello board used for the project's planning that includes user stories, wireframes & an ERD.
+## ☐ Next Steps: Planned future enhancements (icebox items).
