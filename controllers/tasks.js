@@ -6,7 +6,7 @@ module.exports = {
 }
 
 async function create(req, res) {
-    console.log(req.body, req.user); //Checking the user and making sure the middleware fired off successfully
+    console.log("From the create function in task controller", req.body, req.user); //Checking the user and making sure the middleware fired off successfully
     try {
         // So I find the game by its ID(cause people could have more than one of a game, so searching by name wouldn't work)
         const game = await Game.findById(req.body.gameId);
@@ -14,13 +14,13 @@ async function create(req, res) {
         const task = await Task.create({
             user: req.user,
             game: game._id,
-            gameTitle: req.body.game,
+            gameTitle: game.gameTitle,
             taskTitle: req.body.title,
             taskDescription: req.body.description,
             isDone: req.body.done
         });
         // I need to make the task before I can save its ID to the game's to-do list
-        game.tasksToDo.push({task: req.task._id});
+        game.tasksToDo.push({task: task._id});
         // Save the task to the game document
         await game.save();
         // Now respond to the client with the data and a status 201

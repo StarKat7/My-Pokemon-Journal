@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Button, Header } from "semantic-ui-react";
 
 export default function AddTask({ game, handleAddTask }) {
-    console.log(game, " game object in AddTask")
+    // console.log(game, " game object in AddTask")
 
     const gameTitle = game.gameTitle;
     const gameId = game._id;

@@ -15,7 +15,7 @@ export function create(task) {
         if (res.ok) return res.json(); // If the status code is in the 200s, we get an ok
         // Otherwise it'll return with an error
         return res.json().then(response => {
-            console.log(response)
+            console.log("The response was not ok", response)
             throw new Error(response.err)
         })
     });
