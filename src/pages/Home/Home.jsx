@@ -63,8 +63,18 @@ export default function Home({ loggedInUser, handleLogout }) {
             // If it comes back successfully we then use setTasks with the new response.data at the top
             console.log(response);
             setTasks([response.data, ...tasks]);
+            getGames();
         } catch (err) {
             console.log("Error in the AddTask function", err)
+        }
+    }
+
+    // These will mark a task as done or not done, depending on whether they have a true or false in their done key
+    async function taskDone(taskId) {
+        try {
+            
+        } catch (err) {
+            console.log("Error in the taskDone handler")
         }
     }
 

@@ -8,6 +8,8 @@ export default function AddTask({ game, handleAddTask }) {
     const gameId = game._id;
     const userId = game.user;
 
+
+    // ------------- States -------------
     const [taskForm, setTaskForm] = useState({
         game: gameTitle,
         user: userId,

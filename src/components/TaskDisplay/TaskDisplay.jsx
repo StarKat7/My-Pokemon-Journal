@@ -19,6 +19,14 @@ export default function TaskDisplay({ game }) {
                     )
                 })}
             <Header>Tasks Done</Header>
+            {tasksDoneArray.map((task) => {
+                    return (
+                            <Task
+                                task={task}
+                                key={task._id}
+                            />
+                    )
+                })}
         </Segment>
     )
 }

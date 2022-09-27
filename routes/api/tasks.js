@@ -7,7 +7,9 @@ const tasksCtrl = require('../../controllers/tasks');
 
 /*---------- Protected Routes ----------*/
 // Hitting this route calls the create function over in controllers/tasks
-router.post('/', tasksCtrl.create); 
+router.post('/', tasksCtrl.create);
+// Hitting this route calls the markDone function in controllers/tasks
+router.put('/:id', tasksCtrl.markDone);
 // And hitting this one calls the index function
 // router.get('/', tasksCtrl.index);
 

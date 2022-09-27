@@ -20,3 +20,20 @@ export function create(task) {
         })
     });
 }
+
+export function markDone(task) {
+    return fetch(`${BASE_URL}/${task._id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: "Bearer " + tokenService.getToken(),
+        }
+    }).then((res) => {
+        if (res.ok) return res.json();
+
+        return res.json().then(response => {
+            console.log("The markDone response was not ok", response);
+            throw new Error(response.err);
+        })
+    })
+}

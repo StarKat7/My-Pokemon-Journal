@@ -5,6 +5,7 @@ import TaskDisplay from "../TaskDisplay/TaskDisplay";
 
 export default function GameComponent({ game, handleAddTask }) {
 
+    // ------------- States -------------
     const [open, setOpen] = useState(false);
 
 

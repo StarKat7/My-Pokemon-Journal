@@ -2,7 +2,23 @@ const Task = require("../models/task");
 const Game = require("../models/game");
 
 module.exports = {
-    create
+    create,
+    markDone
+}
+
+async function markDone(req, res) {
+    try {
+        // So if I use findOneAndUpdate I think I need to submit the entire task with everything but the boolean changed
+        Task.findOneAndUpdate({ _id: req.body.id }, req.body, { new: true });
+        const gameWithTask = await Game.findById(req.body.gameId);
+        // Okay so now I snip the gameID out of the todo list and put it into the done list
+        gameWithTask.tasksToDo.remove(req.body.id);
+        await gameWithTask.save();
+        gameWithTask.tasksDone.push(req.body.id);
+        await gameWithTask.save();
+    } catch (err) {
+        res.status(400).json({ error: err });
+    }
 }
 
 async function create(req, res) {
@@ -28,6 +44,6 @@ async function create(req, res) {
         // Now respond to the client with the data and a status 201
         res.status(201).json({ data: task })
     } catch (err) {
-        res.status(400).json({error: err})
+        res.status(400).json({ error: err });
     }
 }

@@ -3,6 +3,13 @@ import { Segment, Header } from "semantic-ui-react";
 
 export default function Task({task}) {
     
+    if (!task) {
+        return (
+            <Segment>
+                <p>No tasks yet...</p>
+            </Segment>
+        )
+    }
 
     return (
         <Segment>
