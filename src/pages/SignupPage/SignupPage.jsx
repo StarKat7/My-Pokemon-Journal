@@ -74,7 +74,7 @@ export default function SignUpPage({ handleSignUpOrLogin }) {
     >
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as="h1" color="purple" textAlign="center">My Pokemon Journal</Header>
-        <Header>A place to keep track of what's going on in all your Pokemon games.</Header>
+        <Header>One place to keep track of what's going on in all your Pokemon games.</Header>
         <br />
         <Header as="h2" color="purple" textAlign="center">
           Sign Up
