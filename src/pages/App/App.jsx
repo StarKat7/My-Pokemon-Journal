@@ -25,8 +25,12 @@ function App() {
     // If the user is logged in:
     return (
       <Routes>
-        <Route path="/" element={<Home loggedInUser={user} handleLogout={handleLogout} />} />
-        <Route path="/:gameTitle" element={<GamePage />} />
+        <Route
+          path="/"
+          element={<Home loggedInUser={user} handleLogout={handleLogout} />} />
+        <Route
+          path="/:gameTitle"
+          element={<GamePage loggedInUser={user} handleLogout={handleLogout} />} />
         <Route
           path="/login"
           element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}

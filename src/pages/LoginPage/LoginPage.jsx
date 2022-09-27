@@ -13,7 +13,7 @@ import {
 } from "semantic-ui-react";
 
 export default function LoginPage(props) {
-  
+
   // ------------- State Stuff -------------
   const [error, setError] = useState("");
   const [state, setState] = useState({
@@ -47,51 +47,51 @@ export default function LoginPage(props) {
   // ------------- Here's the return -------------
   return (
     <Grid
-        textAlign="center"
-        style={{ height: "100vh", width: "100vw" }}
-        verticalAlign="middle"
-      >
-        <Grid.Column style={{ maxWidth: 450 }}>
+      textAlign="center"
+      style={{ height: "100vh", width: "100vw" }}
+      verticalAlign="middle"
+    >
+      <Grid.Column style={{ maxWidth: 450 }}>
         <Header as="h1" color="purple" textAlign="center">My Pokemon Journal</Header>
         <Header>A place to keep track of what's going on in all your Pokemon games.</Header>
         <br />
         <Header as="h2" color="purple" textAlign="center">
-        Log into your account
+          Log into your account
         </Header>
-          <Form onSubmit={handleSubmit}>
-            <Segment stacked>
-              <Form.Input
-                type="email"
-                name="email"
-                placeholder="email"
-                value={state.email}
-                onChange={handleChange}
-                required
-              />
-              <Form.Input
-                name="password"
-                type="password"
-                placeholder="password"
-                value={state.password}
-                onChange={handleChange}
-                required
-              />
-              <Button
-                color="purple"
-                fluid
-                size="large"
-                type="submit"
-                className="btn"
-              >
-                Login
-              </Button>
-            </Segment>
-          </Form>
-          <Message>
-            Don't have an account? <Link to="/signup">Sign Up</Link>
-          </Message>
-          {error ? <ErrorMessage error={error} /> : null}
-        </Grid.Column>
-      </Grid>
+        <Form onSubmit={handleSubmit}>
+          <Segment stacked>
+            <Form.Input
+              type="email"
+              name="email"
+              placeholder="email"
+              value={state.email}
+              onChange={handleChange}
+              required
+            />
+            <Form.Input
+              name="password"
+              type="password"
+              placeholder="password"
+              value={state.password}
+              onChange={handleChange}
+              required
+            />
+            <Button
+              color="purple"
+              fluid
+              size="large"
+              type="submit"
+              className="btn"
+            >
+              Login
+            </Button>
+          </Segment>
+        </Form>
+        <Message>
+          Don't have an account? <Link to="/signup">Sign Up</Link>
+        </Message>
+        {error ? <ErrorMessage error={error} /> : null}
+      </Grid.Column>
+    </Grid>
   );
 }

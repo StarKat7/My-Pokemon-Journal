@@ -77,7 +77,7 @@ export default function SignUpPage({ handleSignUpOrLogin }) {
         <Header>A place to keep track of what's going on in all your Pokemon games.</Header>
         <br />
         <Header as="h2" color="purple" textAlign="center">
-        Sign Up
+          Sign Up
         </Header>
         <Form onSubmit={handleSubmit}>
           <Segment stacked>
@@ -129,8 +129,8 @@ export default function SignUpPage({ handleSignUpOrLogin }) {
           {error.message ? <ErrorMessage error={error.message} /> : null}
         </Form>
         <Message>
-            Already have an account? <Link to="/login">Login</Link>
-          </Message>
+          Already have an account? <Link to="/login">Login</Link>
+        </Message>
       </Grid.Column>
     </Grid>
   );
