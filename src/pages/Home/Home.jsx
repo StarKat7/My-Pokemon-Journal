@@ -9,6 +9,7 @@ export default function Home({ loggedInUser, handleLogout }) {
 
     // ------------- States -------------
     const [games, setGames] = useState([]);
+    const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
@@ -54,6 +55,15 @@ export default function Home({ loggedInUser, handleLogout }) {
         }
     }
 
+    // This is for adding Tasks
+    async function handleAddTask(task) {
+        try {
+
+        } catch (err) {
+            console.log("Error in the AddTask function", err)
+        }
+    }
+
     // ------------- The Return -------------
     return (
         <>
@@ -67,7 +77,10 @@ export default function Home({ loggedInUser, handleLogout }) {
                 </Grid.Row>
                 <Grid.Row centered>
                     <Grid.Column style={{ maxWidth: 750 }}>
-                        <GameGallery games={games} itemsPerRow={3} />
+                        <GameGallery
+                            games={games}
+                            handleAddTask={handleAddTask}
+                            itemsPerRow={3} />
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

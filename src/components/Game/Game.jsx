@@ -27,20 +27,13 @@ export default function GameComponent({ game }) {
                         <ul></ul>
                         <Header>Tasks Done</Header>
                         <ul></ul>
-                        <AddTask />
+                        <AddTask game={game} />
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
                     <Button color='black' onClick={() => setOpen(false)}>
                         Done
                     </Button>
-                    <Button
-                        content="Tasks"
-                        labelPosition='right'
-                        icon='checkmark'
-                        onClick={() => setOpen(false)}
-                        positive
-                    />
                 </Modal.Actions>
             </Modal>
             <Card.Content textAlign="center">
