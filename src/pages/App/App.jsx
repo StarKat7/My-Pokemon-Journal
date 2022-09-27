@@ -29,7 +29,7 @@ function App() {
           path="/"
           element={<Home loggedInUser={user} handleLogout={handleLogout} />} />
         <Route
-          path="/:gameTitle"
+          path="/:_id"
           element={<GamePage loggedInUser={user} handleLogout={handleLogout} />} />
         <Route
           path="/login"
