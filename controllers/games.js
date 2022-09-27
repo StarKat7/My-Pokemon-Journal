@@ -24,7 +24,7 @@ async function userGames(req, res) {
   }
 
 async function create(req, res) {
-    console.log(req.body, req.file, req.user); //Checking the user and making sure the middleware fired off successfully
+    console.log(req.body, req.user); //Checking the user and making sure the middleware fired off successfully
     try {
         // So I'm using the Game model to create a document in mongodb's games collection
         const game = await Game.create({

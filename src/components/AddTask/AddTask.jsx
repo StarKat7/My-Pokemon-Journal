@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Checkbox, Button, Header } from "semantic-ui-react";
+import { Form, Button, Header } from "semantic-ui-react";
 
 export default function AddTask({ game, handleAddTask }) {
 

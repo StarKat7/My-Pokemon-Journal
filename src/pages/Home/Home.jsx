@@ -4,6 +4,7 @@ import { Header, Divider, Grid } from "semantic-ui-react"
 import AddGame from "../../components/AddGame/AddGame";
 import GameGallery from "../../components/GameGallery/GameGallery";
 import * as gamesAPI from "../../utils/gamesApi";
+import * as tasksAPI from "../../utils/tasksApi";
 
 export default function Home({ loggedInUser, handleLogout }) {
 
@@ -56,9 +57,12 @@ export default function Home({ loggedInUser, handleLogout }) {
     }
 
     // This is for adding Tasks
-    async function handleAddTask(task) {
+    async function handleAddTask(task, gameId) {
         try {
-
+            const response = await tasksAPI.create(task, gameId); // Go to utils/tasksApi to see what happens next
+            // If it comes back successfully we then use setTasks with the new response.data at the top
+            console.log(response);
+            setTasks([response.data, ...tasks]);
         } catch (err) {
             console.log("Error in the AddTask function", err)
         }
