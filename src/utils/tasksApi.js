@@ -2,8 +2,9 @@ import tokenService from "./tokenService";
 
 const BASE_URL = "/api/tasks";
 
-export function create(task, gameId) {
-    return fetch(`${BASE_URL}/${gameId}/tasks`, {
+export function create(task) {
+    console.log("Looking at task object in fetch call", task)
+    return fetch(BASE_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

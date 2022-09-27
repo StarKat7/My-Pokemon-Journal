@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card, Image, Modal, Header, Button, Segment } from "semantic-ui-react";
 import AddTask from "../AddTask/AddTask";
 
-export default function GameComponent({ game }) {
+export default function GameComponent({ game, handleAddTask }) {
 
     const [open, setOpen] = useState(false);
 
@@ -27,7 +27,7 @@ export default function GameComponent({ game }) {
                         <ul></ul>
                         <Header>Tasks Done</Header>
                         <ul></ul>
-                        <AddTask game={game} />
+                        <AddTask game={game} handleAddTask={handleAddTask} />
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>

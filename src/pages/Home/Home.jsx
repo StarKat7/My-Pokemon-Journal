@@ -57,9 +57,9 @@ export default function Home({ loggedInUser, handleLogout }) {
     }
 
     // This is for adding Tasks
-    async function handleAddTask(task, gameId) {
+    async function handleAddTask(task) {
         try {
-            const response = await tasksAPI.create(task, gameId); // Go to utils/tasksApi to see what happens next
+            const response = await tasksAPI.create(task); // Go to utils/tasksApi to see what happens next
             // If it comes back successfully we then use setTasks with the new response.data at the top
             console.log(response);
             setTasks([response.data, ...tasks]);

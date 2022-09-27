@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import { Form, Button, Header } from "semantic-ui-react";
 
 export default function AddTask({ game, handleAddTask }) {
+    console.log(game, " game object in AddTask")
 
     const gameTitle = game.gameTitle;
+    const gameId = game._id;
+    const userId = game.user;
 
     const [taskForm, setTaskForm] = useState({
-        game: { gameTitle },
+        game: gameTitle,
+        user: userId,
+        gameId: gameId,
         title: "",
         description: "",
         done: false
@@ -28,7 +33,9 @@ export default function AddTask({ game, handleAddTask }) {
         // Actually yeah I need the Home page to rerender when the game is added so define handleAddGame() above and then pass it down to here
         handleAddTask(requestData); // This is what gets sent over to the server, remember that handleAddGame is calling a function from the gamesAPI util
         setTaskForm({
-            game: { gameTitle },
+            game: gameTitle,
+            user: userId,
+            gameId: gameId,
             title: "",
             description: "",
             done: false
@@ -37,7 +44,7 @@ export default function AddTask({ game, handleAddTask }) {
 
     return (
         <>
-            <Header>Add a Task for {game.gameTitle}</Header>
+            <Header>Add a Task for {gameTitle}</Header>
             <Form onSubmit={handleSubmit}>
                 <Form.Input
                     name="title"
@@ -46,7 +53,7 @@ export default function AddTask({ game, handleAddTask }) {
                     onChange={handleChange}
                 />
                 <Form.TextArea
-                    name="gen"
+                    name="description"
                     value={taskForm.description}
                     placeholder="Description"
                     onChange={handleChange}

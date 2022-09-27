@@ -9,11 +9,11 @@ async function create(req, res) {
     console.log(req.body, req.user); //Checking the user and making sure the middleware fired off successfully
     try {
         // So I find the game by its ID(cause people could have more than one of a game, so searching by name wouldn't work)
-        const game = await Game.findById(req.params.id);
+        const game = await Game.findById(req.body.gameId);
         // So I'm using the Task model to create a document in mongodb's tasks collection
         const task = await Task.create({
             user: req.user,
-            game: req.game._id,
+            game: game._id,
             gameTitle: req.body.game,
             taskTitle: req.body.title,
             taskDescription: req.body.description,
