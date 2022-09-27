@@ -2,8 +2,7 @@ const Task = require("../models/task");
 const Game = require("../models/game");
 
 module.exports = {
-    create,
-    // index
+    create
 }
 
 async function create(req, res) {
@@ -15,6 +14,7 @@ async function create(req, res) {
         const task = await Task.create({
             user: req.user,
             game: req.game._id,
+            gameTitle: req.body.game,
             taskTitle: req.body.title,
             taskDescription: req.body.description,
             isDone: req.body.done

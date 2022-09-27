@@ -7,9 +7,9 @@ const tasksCtrl = require('../../controllers/tasks');
 
 /*---------- Protected Routes ----------*/
 // Hitting this route calls the create function over in controllers/tasks
-router.post('/games/:id/tasks', tasksCtrl.create); 
+router.post('/games/:id/likes', tasksCtrl.create); 
 // And hitting this one calls the index function
 // router.get('/', tasksCtrl.index);
 
 
-// module.exports = router;
+module.exports = router;
