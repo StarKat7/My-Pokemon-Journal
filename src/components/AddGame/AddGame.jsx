@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Accordion, Dropdown, Form, Button } from "semantic-ui-react";
+import { Card, Modal, Dropdown, Form, Button } from "semantic-ui-react";
 
 
 // ------------- Games for the Dropdown -------------
@@ -34,7 +34,8 @@ export default function AddGame({ handleAddGame }) {
         coverUrl: "",
         gen: "",
         platform: ""
-    })
+    });
+    const [open, setOpen] = useState(false);
 
     // ------------- Handlers -------------
     function handleChange(e) {
@@ -62,15 +63,16 @@ export default function AddGame({ handleAddGame }) {
     // ------------- The Return -------------
     return (
         <Card>
-            <Card.Content header='Add New Game' textAlign="center" />
-            <Card.Content textAlign="left">
-                {/* <Dropdown
-                    placeholder="Select Game"
-                    fluid
-                    selection options={gameOptions}
-                />
-                I'll get to you later, once I know the form works. */}
-                <Form onSubmit={handleSubmit}>
+            <Modal
+                onClose={() => setOpen(false)}
+                onOpen={() => setOpen(true)}
+                open={open}
+                trigger={<Button size="large">Add New Game</Button>}
+            >
+                <Modal.Header>Add Game</Modal.Header>
+                <Modal.Content image>
+                    <Modal.Description>
+                    <Form onSubmit={handleSubmit}>
                     <Form.Input
                         name="title"
                         value={gameForm.title}
@@ -97,7 +99,14 @@ export default function AddGame({ handleAddGame }) {
                     />
                     <Button type="submit" className="btn">Add Game</Button>
                 </Form>
-            </Card.Content>
+                    </Modal.Description>
+                </Modal.Content>
+                <Modal.Actions>
+                    <Button color='black' onClick={() => setOpen(false)}>
+                        Maybe Not...
+                    </Button>
+                </Modal.Actions>
+            </Modal>
         </Card>
     )
 }
