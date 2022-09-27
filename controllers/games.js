@@ -13,7 +13,7 @@ async function userGames(req, res) {
     //   if (!user) return res.status(404).json({ error: "Something's gone wrong in userGames, check it in controllers/users.js" })
       // Now I find the user's games...
       // I put user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'} in the Game model so that should apply here
-      const games = await Game.find({ user: req.user._id }).exec();
+      const games = await Game.find({ user: req.user._id }).populate("tasksToDo").populate("tasksDone").exec();
       res.status(200).json({
         data: games
       });

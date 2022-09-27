@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Card, Image, Modal, Header, Button, Segment } from "semantic-ui-react";
 import AddTask from "../AddTask/AddTask";
+import TaskDisplay from "../TaskDisplay/TaskDisplay";
 
 export default function GameComponent({ game, handleAddTask }) {
 
@@ -23,10 +24,7 @@ export default function GameComponent({ game, handleAddTask }) {
                             <p>Generation {game.gen}</p>
                             <p>Platform: {game.platform}</p>
                         </Segment>
-                        <Header>Tasks to Do</Header>
-                        <ul></ul>
-                        <Header>Tasks Done</Header>
-                        <ul></ul>
+                        <TaskDisplay game={game} />
                         <AddTask game={game} handleAddTask={handleAddTask} />
                     </Modal.Description>
                 </Modal.Content>

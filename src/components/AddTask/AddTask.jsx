@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button, Header } from "semantic-ui-react";
+import { Form, Button, Header, Segment } from "semantic-ui-react";
 
 export default function AddTask({ game, handleAddTask }) {
     // console.log(game, " game object in AddTask")
@@ -43,7 +43,7 @@ export default function AddTask({ game, handleAddTask }) {
     }
 
     return (
-        <>
+        <Segment>
             <Header>Add a Task for {gameTitle}</Header>
             <Form onSubmit={handleSubmit}>
                 <Form.Input
@@ -60,6 +60,6 @@ export default function AddTask({ game, handleAddTask }) {
                 />
                 <Button type="submit" className="btn">Add Task</Button>
             </Form>
-        </>
+        </Segment>
     )
 }
