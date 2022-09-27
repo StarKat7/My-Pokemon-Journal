@@ -60,14 +60,14 @@ export default function Home({ loggedInUser, handleLogout }) {
             <PageHeader loggedInUser={loggedInUser} handleLogout={handleLogout} />
             <Header as="h1" textAlign="center">My Games</Header>
             <Divider inverted />
-            <Grid centered>
-                <Grid.Row>
+            <Grid>
+                <Grid.Row centered>
                     {/* I want this to be accordion and/or have dropdown but first I need to make sure the API calls work for it */}
                     <AddGame handleAddGame={handleAddGame} />
                 </Grid.Row>
-                <Grid.Row>
-                    <Grid.Column textAlign="center">
-                        <GameGallery games={games} />
+                <Grid.Row centered>
+                    <Grid.Column style={{ maxWidth: 750 }}>
+                        <GameGallery games={games} itemsPerRow={3} />
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
