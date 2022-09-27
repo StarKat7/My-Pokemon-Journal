@@ -20,6 +20,8 @@ async function create(req, res) {
             isDone: req.body.done
         });
         // I need to make the task before I can save its ID to the game's to-do list
+        // Why THE HELL did I have curly brackets in the .push()? Earlier me what were you thinking?
+        // Also now I'm wondering if I even need to have arrays of task ID's? Musings for future me cause my brain is fried
         gameGettingTask.tasksToDo.push(task);
         // Save the task to the game document
         await gameGettingTask.save();
