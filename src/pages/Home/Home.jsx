@@ -48,7 +48,7 @@ export default function Home({ loggedInUser, handleLogout }) {
             const response = await gamesAPI.create(game); // Here we make the API call, head over to utils/gamesApi to see what happens next
             // If it comes back successfully we then use setGames with the new response.data at the top
             console.log(response);
-            setGames([response.data, ...games]);
+            getGames();
             // And we turn off loading
             setLoading(false);
         } catch (err) {
@@ -74,7 +74,7 @@ export default function Home({ loggedInUser, handleLogout }) {
         try {
             const response = await tasksAPI.markDone(task);
             console.log(response);
-            setTasks([response.data, ...tasks]);
+            setTasks([response.data]);
             getGames();
         } catch (err) {
             console.log("Error in the taskDone handler")

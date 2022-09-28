@@ -11,8 +11,8 @@ const availableGames = [
     { gameTitle: "Pokemon Legends: Arceus", gen: 8, coverurl: "https://assets.pokemon.com/assets/cms2/img/video-games/video-games/pokemon_legends_arceus/pokemon-legends-arceus-box-art-en.jpg", platform: "Nintendo Switch" },
     { gameTitle: "Pokemon Sun", gen: 7, coverurl: "", platform: "3DS" },
     { gameTitle: "Pokemon Moon", gen: 7, coverurl: "", platform: "3DS" },
-    { gameTitle: "Pokemon UltraSun", gen: 7, coverurl: "", platform: "3DS" },
-    { gameTitle: "Pokemon UltraMoon", gen: 7, coverurl: "", platform: "3DS" },
+    { gameTitle: "Pokemon UltraSun", gen: 7, coverurl: "https://assets.pokemon.com/assets/cms2/img/video-games/video-games/pokemon_ultra_sun_ultra_moon/art/pcom-sorghselrkjhgserjgt-slider-01.jpg", platform: "3DS" },
+    { gameTitle: "Pokemon UltraMoon", gen: 7, coverurl: "https://assets.pokemon.com/assets/cms2/img/video-games/video-games/pokemon_ultra_sun_ultra_moon/art/pcom-sorghselrkjhgserjgt-slider-02.jpg", platform: "3DS" },
 ]
 
 const gameOptions = [
@@ -97,7 +97,7 @@ export default function AddGame({ handleAddGame }) {
                         placeholder="Platform"
                         onChange={handleChange}
                     />
-                    <Button type="submit" className="btn">Add Game</Button>
+                    <Button type="submit" className="btn" onClick={() => setOpen(false)}>Add Game</Button>
                 </Form>
                     </Modal.Description>
                 </Modal.Content>

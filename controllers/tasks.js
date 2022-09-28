@@ -20,6 +20,7 @@ async function markDone(req, res) {
         await gameWithTask.save();
         gameWithTask.tasksDone.push(req.body._id);
         await gameWithTask.save();
+        res.status(201).json({ data: task })
     } catch (err) {
         res.status(400).json({ error: err });
     }
