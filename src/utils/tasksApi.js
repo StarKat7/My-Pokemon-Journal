@@ -27,7 +27,8 @@ export function markDone(task) {
         headers: {
             'Content-Type': 'application/json',
             Authorization: "Bearer " + tokenService.getToken(),
-        }
+        },
+        body: JSON.stringify(task)
     }).then((res) => {
         if (res.ok) return res.json();
 

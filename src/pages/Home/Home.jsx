@@ -70,9 +70,12 @@ export default function Home({ loggedInUser, handleLogout }) {
     }
 
     // These will mark a task as done or not done, depending on whether they have a true or false in their done key
-    async function taskDone(taskId) {
+    async function taskDone(task) {
         try {
-            
+            const response = await tasksAPI.markDone(task);
+            console.log(response);
+            setTasks([response.data, ...tasks]);
+            getGames();
         } catch (err) {
             console.log("Error in the taskDone handler")
         }
@@ -94,6 +97,7 @@ export default function Home({ loggedInUser, handleLogout }) {
                         <GameGallery
                             games={games}
                             handleAddTask={handleAddTask}
+                            taskDone={taskDone}
                             itemsPerRow={3} />
                     </Grid.Column>
                 </Grid.Row>
