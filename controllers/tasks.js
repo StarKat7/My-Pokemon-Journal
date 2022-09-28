@@ -10,12 +10,16 @@ async function markDone(req, res) {
     try {
         console.log("Reached the markDone controller for tasks", req.body, req.user);
         // So if I use findOneAndUpdate I think I need to submit the entire task with everything but the boolean changed
-        Task.findOneAndUpdate({ _id: req.body.id }, req.body, { new: true });
-        const gameWithTask = await Game.findById(req.body.gameId);
+        Task.findOneAndUpdate({ _id: req.body._id }, req.body, { new: true });
+        // Why does the task come out looking all funky after it's updated?
+        const task = Task.findById(req.body._id);
+        const gameWithTask = await Game.findById(req.body.game);
         // Okay so now I snip the gameID out of the todo list and put it into the done list
-        gameWithTask.tasksToDo.remove(req.body.id);
+        console.log("In the tasks markDone controller, looking at updated task and gameWithTask", task, gameWithTask)
+        // Okay so I KNOW the button click is making it to this controller, the specific game IS being modified. It's just the task itself is not being updated correctly.
+        gameWithTask.tasksToDo.remove(req.body._id);
         await gameWithTask.save();
-        gameWithTask.tasksDone.push(req.body.id);
+        gameWithTask.tasksDone.push(req.body._id);
         await gameWithTask.save();
     } catch (err) {
         res.status(400).json({ error: err });
