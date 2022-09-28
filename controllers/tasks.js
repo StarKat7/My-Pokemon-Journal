@@ -10,9 +10,8 @@ async function markDone(req, res) {
     try {
         console.log("Reached the markDone controller for tasks", req.body, req.user);
         // So if I use findOneAndUpdate I think I need to submit the entire task with everything but the boolean changed
-        Task.findOneAndUpdate({ _id: req.body._id }, req.body, { new: true });
+        const task = await Task.findOneAndUpdate({ _id: req.body._id }, req.body, { new: true });
         // Why does the task come out looking all funky after it's updated?
-        const task = Task.findById(req.body._id);
         const gameWithTask = await Game.findById(req.body.game);
         // Okay so now I snip the gameID out of the todo list and put it into the done list
         console.log("In the tasks markDone controller, looking at updated task and gameWithTask", task, gameWithTask)
