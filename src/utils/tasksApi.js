@@ -22,7 +22,7 @@ export function create(task) {
 }
 
 export function markDone(task) {
-    return fetch(`${BASE_URL}/${task._id}`, {
+    return fetch(BASE_URL, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export function markDone(task) {
         if (res.ok) return res.json();
 
         return res.json().then(response => {
-            console.log("The markDone response was not ok", response);
+            console.log("The markDone response was not ok, this error is in utils/tasksApi", response);
             throw new Error(response.err);
         })
     })

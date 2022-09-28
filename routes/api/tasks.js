@@ -9,7 +9,7 @@ const tasksCtrl = require('../../controllers/tasks');
 // Hitting this route calls the create function over in controllers/tasks
 router.post('/', tasksCtrl.create);
 // Hitting this route calls the markDone function in controllers/tasks
-router.put('/:id', tasksCtrl.markDone);
+router.put('/', tasksCtrl.markDone);
 // And hitting this one calls the index function
 // router.get('/', tasksCtrl.index);
 

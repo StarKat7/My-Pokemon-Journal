@@ -8,6 +8,7 @@ module.exports = {
 
 async function markDone(req, res) {
     try {
+        console.log("Reached the markDone controller for tasks", req.body, req.user);
         // So if I use findOneAndUpdate I think I need to submit the entire task with everything but the boolean changed
         Task.findOneAndUpdate({ _id: req.body.id }, req.body, { new: true });
         const gameWithTask = await Game.findById(req.body.gameId);
