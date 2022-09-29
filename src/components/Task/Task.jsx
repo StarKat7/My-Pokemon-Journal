@@ -34,7 +34,7 @@ export default function Task({ task, taskDone, handleDeleteTask }) {
             <Header>{task.taskTitle}</Header>
             <p>{task.taskDescription}</p>
             {task.isDone ? null : <Form onSubmit={handleMark}><Button type="submit" floated="right" onClick={handleClick}>Done</Button></Form>}
-            <Form onSubmit={handleDelete}><Button type="submit">Delete Task</Button></Form>
+            <Button onClick={handleDelete}>Delete Task</Button>
         </Segment>
     )
 }
