@@ -3,7 +3,7 @@ import { Card, Image, Modal, Form, Button, Segment } from "semantic-ui-react";
 import AddTask from "../AddTask/AddTask";
 import TaskDisplay from "../TaskDisplay/TaskDisplay";
 
-export default function GameComponent({ game, handleAddTask, taskDone, handleDeleteGame }) {
+export default function GameComponent({ game, handleAddTask, taskDone, handleDeleteGame, handleDeleteTask }) {
 
     // ------------- States -------------
     const [open, setOpen] = useState(false);
@@ -35,8 +35,15 @@ export default function GameComponent({ game, handleAddTask, taskDone, handleDel
                             <p>Generation {game.gen}</p>
                             <p>Platform: {game.platform}</p>
                         </Segment>
-                        <TaskDisplay game={game} taskDone={taskDone} />
-                        <AddTask game={game} handleAddTask={handleAddTask} />
+                        <TaskDisplay
+                            game={game}
+                            taskDone={taskDone}
+                            handleDeleteTask={handleDeleteTask}
+                        />
+                        <AddTask
+                            game={game}
+                            handleAddTask={handleAddTask}
+                        />
                         <Form onSubmit={handleSubmit} >
                             <Button type="submit" color="red">Delete Game</Button>
                         </Form>

@@ -11,7 +11,6 @@ export default function Home({ loggedInUser, handleLogout }) {
     // ------------- States -------------
     const [games, setGames] = useState([]);
     const [tasks, setTasks] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
 
@@ -25,10 +24,8 @@ export default function Home({ loggedInUser, handleLogout }) {
             console.log(response, "<- the data");
             // And we're back wih the data from the fetch
             setGames([...response.data]);
-            setLoading(false);
         } catch (err) {
             console.log(err.message, "Issues in getGames");
-            setLoading(false);
         }
     }
     // Okay this is working now there was an aws thing that was getting in the way?? Now I need to give the games to the childe components that need them
@@ -44,13 +41,11 @@ export default function Home({ loggedInUser, handleLogout }) {
     // So this is the function for adding a game that will be passed down to the AddGame component... This will cover the C in CRUD
     async function handleAddGame(game) {
         try {
-            setLoading(true);
             const response = await gamesAPI.create(game); // Here we make the API call, head over to utils/gamesApi to see what happens next
             // If it comes back successfully we then use setGames with the new response.data at the top
             console.log(response);
             getGames();
             // And we turn off loading
-            setLoading(false);
         } catch (err) {
             console.log("Error in the handleAddGame function: ", err);
         }
@@ -77,6 +72,17 @@ export default function Home({ loggedInUser, handleLogout }) {
             getGames();
         } catch (err) {
             console.log("Error in the AddTask function", err)
+        }
+    }
+
+    // This is for deleting Tasks
+    async function handleDeleteTask(task) {
+        try {
+            const response = await tasksAPI.deleteTask(task);
+            console.log(response);
+            getGames();
+        } catch (err) {
+            console.log("Error in handleDeleteTask");
         }
     }
 
@@ -109,6 +115,7 @@ export default function Home({ loggedInUser, handleLogout }) {
                             games={games}
                             handleDeleteGame={handleDeleteGame}
                             handleAddTask={handleAddTask}
+                            handleDeleteTask={handleDeleteTask}
                             taskDone={taskDone}
                             itemsPerRow={3} />
                     </Grid.Column>
