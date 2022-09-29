@@ -11,7 +11,9 @@ export default function GameComponent({ game, handleAddTask, taskDone, handleDel
     function handleSubmit(e) {
         e.preventDefault();
         const request = game._id;
+        console.log(request, "<- the deleteGame request")
         handleDeleteGame(request);
+        setOpen(false)
     }
 
     return (
@@ -26,7 +28,7 @@ export default function GameComponent({ game, handleAddTask, taskDone, handleDel
                 <Modal.Content image scrolling>
                     <Modal.Description>
                             <Form onSubmit={handleSubmit}>
-                            <Button type="submit" onClick={() => setOpen(false)} color="red">Delete</Button>
+                            <Button type="submit" color="red">Delete</Button>
                             </Form>
                         <Segment textAlign="center">
                             <Image centered src={game.coverUrl} />
