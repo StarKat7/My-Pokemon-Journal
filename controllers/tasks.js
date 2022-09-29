@@ -8,17 +8,27 @@ module.exports = {
 }
 
 async function deleteTask(req, res) {
-    console.log("Arrived at the deleteTask controller")
+    console.log("Arrived at the deleteTask controller", req);
     try {
-      // This one will be easier than deleting a game, since I only have to delete one thing
-      await Task.findOneAndDelete({ _id: req.params.id });
-      console.log("Task was deleted")
-      res.json({data: "Task was removed"})
+        // This one will be easier than deleting a game, since I only have to delete one thing
+        // Wait no I have to delete the task from the game's lists too!
+        const gameWithTask = await Game.findById(req.body.game);
+        console.log("Found the game", gameWithTask);
+        // Removing from whichever list it's in
+        await gameWithTask.tasksToDo.remove(req.params.id);
+        await gameWithTask.tasksDone.remove(req.params.id);
+        await gameWithTask.save();
+        console.log("Saved document", gameWithTask);
+        // Remove task from the list
+        await Task.findOneAndDelete({ _id: req.body._id });
+        console.log("Task was deleted");
+        // So findOneAndDelete was working before but now it's not...
+        res.json({ data: "Task was removed" })
     } catch (err) {
-      console.log("Something went wrong in the deleteTask controller")
-      res.status(400).json({ error: err })
+        console.log("Something went wrong in the deleteTask controller")
+        res.status(400).json({ error: err })
     }
-  }
+}
 
 async function markDone(req, res) {
     try {

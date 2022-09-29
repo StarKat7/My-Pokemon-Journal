@@ -76,9 +76,9 @@ export default function Home({ loggedInUser, handleLogout }) {
     }
 
     // This is for deleting Tasks
-    async function handleDeleteTask(taskId) {
+    async function handleDeleteTask(task) {
         try {
-            const response = await tasksAPI.deleteTask(taskId);
+            const response = await tasksAPI.deleteTask(task);
             console.log(response);
             getGames();
         } catch (err) {

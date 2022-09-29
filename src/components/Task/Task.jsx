@@ -23,7 +23,7 @@ export default function Task({ task, taskDone, handleDeleteTask }) {
 
     function handleDelete(e) {
         e.preventDefault();
-        const responseData = thisTask._id;
+        const responseData = thisTask;
         handleDeleteTask(responseData);
     }
 

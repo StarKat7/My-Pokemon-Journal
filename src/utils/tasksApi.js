@@ -21,13 +21,15 @@ export function create(task) {
     });
 }
 
-export function deleteTask(taskId) {
+export function deleteTask(task) {
+    const taskId = task._id;
     return fetch(`${BASE_URL}/${taskId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
             Authorization: "Bearer " + tokenService.getToken(),
-        }
+        },
+        body: JSON.stringify(task)
     }).then((res) => {
         if (res.ok) return res.json();
         
