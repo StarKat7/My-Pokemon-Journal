@@ -11,9 +11,11 @@ module.exports = {
 async function deleteGame(req, res) {
   console.log("Arrived at the deleteGame controller")
   try {
-    await Task.deleteMany({ game: req.params._id });
+    // So I have to delete all the tasks that have the game's ID in them...
+    await Task.deleteMany({ game: req.params.id });
     console.log("Tasks were deleted");
-    await Game.findOneAndDelete({ _id: req.params._id });
+    // And then delete the game itself
+    await Game.findOneAndDelete({ _id: req.params.id });
     console.log("Game was deleted")
     res.json({data: "Game and tasks were removed"})
   } catch (err) {
