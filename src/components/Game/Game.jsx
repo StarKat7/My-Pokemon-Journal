@@ -10,7 +10,8 @@ export default function GameComponent({ game, handleAddTask, taskDone, handleDel
 
     function handleSubmit(e) {
         e.preventDefault();
-        handleDeleteGame(game);
+        const request = game;
+        handleDeleteGame(request);
     }
 
     return (
@@ -24,7 +25,7 @@ export default function GameComponent({ game, handleAddTask, taskDone, handleDel
                 <Modal.Header centered>{game.gameTitle} Details</Modal.Header>
                 <Modal.Content image scrolling>
                     <Modal.Description>
-                            <Form>
+                            <Form onSubmit={handleSubmit}>
                             <Button type="submit" onClick={() => setOpen(false)} color="red">Delete</Button>
                             </Form>
                         <Segment textAlign="center">
