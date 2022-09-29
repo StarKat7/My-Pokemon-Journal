@@ -37,7 +37,7 @@ export default function GameComponent({ game, handleAddTask, taskDone, handleDel
                         </Segment>
                         <TaskDisplay game={game} taskDone={taskDone} />
                         <AddTask game={game} handleAddTask={handleAddTask} />
-                        <Form onSubmit={handleSubmit} floated="left">
+                        <Form onSubmit={handleSubmit} >
                             <Button type="submit" color="red">Delete Game</Button>
                         </Form>
                     </Modal.Description>
