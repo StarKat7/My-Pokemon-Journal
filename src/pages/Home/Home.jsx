@@ -115,6 +115,7 @@ export default function Home({ loggedInUser, handleLogout }) {
                             games={games}
                             handleDeleteGame={handleDeleteGame}
                             handleAddTask={handleAddTask}
+                            handleDeleteTask={handleDeleteTask}
                             taskDone={taskDone}
                             itemsPerRow={3} />
                     </Grid.Column>

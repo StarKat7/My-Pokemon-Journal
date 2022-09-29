@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Segment, Header } from "semantic-ui-react";
 import Task from "../Task/Task";
 
-export default function TaskDisplay({ game, taskDone }) {
+export default function TaskDisplay({ game, taskDone, handleDeleteTask }) {
 
     const tasksToDoArray = game.tasksToDo;
     const tasksDoneArray = game.tasksDone;
@@ -16,6 +16,7 @@ export default function TaskDisplay({ game, taskDone }) {
                                 task={task}
                                 key={task._id}
                                 taskDone={taskDone}
+                                handleDeleteTask={handleDeleteTask}
                             />
                     )
                 })}
@@ -26,6 +27,7 @@ export default function TaskDisplay({ game, taskDone }) {
                                 task={task}
                                 key={task._id}
                                 taskDone={taskDone}
+                                handleDeleteTask={handleDeleteTask}
                             />
                     )
                 })}

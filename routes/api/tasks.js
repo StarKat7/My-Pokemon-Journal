@@ -11,7 +11,7 @@ router.post('/', tasksCtrl.create);
 // Hitting this route calls the markDone function in controllers/tasks
 router.put('/', tasksCtrl.markDone);
 // Hitting this route calls the deleteTask function in controllers/tasks
-router.delete('/', tasksCtrl.deleteTask);
+router.delete('/:id', tasksCtrl.deleteTask);
 // And hitting this one calls the index function
 // router.get('/', tasksCtrl.index);
 
