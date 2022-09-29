@@ -24,9 +24,9 @@ export default function GameComponent({ game, handleAddTask, taskDone, handleDel
                 <Modal.Header centered>{game.gameTitle} Details</Modal.Header>
                 <Modal.Content image scrolling>
                     <Modal.Description>
-                        <Form onSubmit={handleSubmit}>
+                        
                             <Button type="submit" onClick={() => setOpen(false)} color="red">Delete</Button>
-                        </Form>
+                        
                         <Segment textAlign="center">
                             <Image centered src={game.coverUrl} />
                             <p>Generation {game.gen}</p>
