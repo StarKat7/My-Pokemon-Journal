@@ -27,6 +27,7 @@ const gameOptions = [
 
 export default function AddGame({ handleAddGame }) {
     // AddGame will be a form that is rendered on the Home page, accordian so it only pops out when the user needs it.
+    
     // ------------- States -------------
     const [dropdownGame, setDropdownGame] = useState({})
     const [gameForm, setGameForm] = useState({
@@ -73,33 +74,33 @@ export default function AddGame({ handleAddGame }) {
                 <Modal.Header>Add Game</Modal.Header>
                 <Modal.Content image>
                     <Modal.Description>
-                    <Form onSubmit={handleSubmit}>
-                    <Form.Input
-                        name="title"
-                        value={gameForm.title}
-                        placeholder="Game Title"
-                        onChange={handleChange}
-                    />
-                    <Form.Input
-                        name="coverUrl"
-                        value={gameForm.coverUrl}
-                        placeholder="Game Cover Art URL Here"
-                        onChange={handleChange}
-                    />
-                    <Form.Input
-                        name="gen"
-                        value={gameForm.gen}
-                        placeholder="Generation"
-                        onChange={handleChange}
-                    />
-                    <Form.Input
-                        name="platform"
-                        value={gameForm.platform}
-                        placeholder="Platform"
-                        onChange={handleChange}
-                    />
-                    <Button type="submit" className="btn">Add Game</Button>
-                </Form>
+                        <Form onSubmit={handleSubmit}>
+                            <Form.Input
+                                name="title"
+                                value={gameForm.title}
+                                placeholder="Game Title"
+                                onChange={handleChange}
+                            />
+                            <Form.Input
+                                name="coverUrl"
+                                value={gameForm.coverUrl}
+                                placeholder="Game Cover Art URL Here"
+                                onChange={handleChange}
+                            />
+                            <Form.Input
+                                name="gen"
+                                value={gameForm.gen}
+                                placeholder="Generation"
+                                onChange={handleChange}
+                            />
+                            <Form.Input
+                                name="platform"
+                                value={gameForm.platform}
+                                placeholder="Platform"
+                                onChange={handleChange}
+                            />
+                            <Button type="submit" className="btn">Add Game</Button>
+                        </Form>
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>

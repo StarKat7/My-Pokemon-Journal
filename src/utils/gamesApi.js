@@ -31,7 +31,7 @@ export function deleteGame(gameId) {
         }
     }).then((res) => {
         if (res.ok) return res.json();
-        
+
         console.log("Something's wrong in gamesApi")
         throw new Error(res.error);
     })

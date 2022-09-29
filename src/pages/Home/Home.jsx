@@ -11,7 +11,6 @@ export default function Home({ loggedInUser, handleLogout }) {
     // ------------- States -------------
     const [games, setGames] = useState([]);
     const [tasks, setTasks] = useState([]);
-    const [error, setError] = useState("");
 
 
     // ------------- UseEffect -------------

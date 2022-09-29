@@ -8,6 +8,8 @@ export default function GameComponent({ game, handleAddTask, taskDone, handleDel
     // ------------- States -------------
     const [open, setOpen] = useState(false);
 
+
+    // ------------- Handlers -------------
     function handleSubmit(e) {
         e.preventDefault();
         const request = game._id;
@@ -16,6 +18,8 @@ export default function GameComponent({ game, handleAddTask, taskDone, handleDel
         setOpen(false)
     }
 
+
+    // ------------- The Return -------------
     return (
         <Card >
             <Modal

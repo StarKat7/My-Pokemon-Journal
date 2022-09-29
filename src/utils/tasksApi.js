@@ -32,7 +32,7 @@ export function deleteTask(task) {
         body: JSON.stringify(task)
     }).then((res) => {
         if (res.ok) return res.json();
-        
+
         console.log("Something's wrong in tasksApi")
         throw new Error(res.error);
     })

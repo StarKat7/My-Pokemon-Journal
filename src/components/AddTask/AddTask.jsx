@@ -43,7 +43,9 @@ export default function AddTask({ game, handleAddTask }) {
             done: false
         })
     }
+    
 
+    // ------------- The Return -------------
     return (
         <Segment>
             <Header>Add a Task for {gameTitle}</Header>

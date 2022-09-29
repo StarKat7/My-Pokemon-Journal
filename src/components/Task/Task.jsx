@@ -3,10 +3,13 @@ import { Segment, Header, Button, Form } from "semantic-ui-react";
 
 export default function Task({ task, taskDone, handleDeleteTask }) {
 
+    // ------------- States -------------
     const [thisTask, setThisTask] = useState(task);
 
     console.log("looking at thisTask in the Task Component", thisTask);
 
+
+    // ------------- Handlers -------------
     function handleClick() {
         setThisTask({
             ...thisTask,
@@ -29,6 +32,7 @@ export default function Task({ task, taskDone, handleDeleteTask }) {
 
     // So I have to make it so the button only renders if the isDone key is set to false
 
+    // ------------- The Return -------------
     return (
         <Segment>
             <Header>{task.taskTitle}</Header>
