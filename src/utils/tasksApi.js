@@ -21,6 +21,21 @@ export function create(task) {
     });
 }
 
+export function deleteTask(taskId) {
+    return fetch(`${BASE_URL}/${taskId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: "Bearer " + tokenService.getToken(),
+        }
+    }).then((res) => {
+        if (res.ok) return res.json();
+        
+        console.log("Something's wrong in tasksApi")
+        throw new Error(res.error);
+    })
+}
+
 export function markDone(task) {
     return fetch(BASE_URL, {
         method: 'PUT',

@@ -3,8 +3,22 @@ const Game = require("../models/game");
 
 module.exports = {
     create,
-    markDone
+    markDone,
+    deleteTask
 }
+
+async function deleteTask(req, res) {
+    console.log("Arrived at the deleteTask controller")
+    try {
+      // This one will be easier than deleting a game, since I only have to delete one thing
+      await Task.findOneAndDelete({ _id: req.params.id });
+      console.log("Task was deleted")
+      res.json({data: "Task was removed"})
+    } catch (err) {
+      console.log("Something went wrong in the deleteTask controller")
+      res.status(400).json({ error: err })
+    }
+  }
 
 async function markDone(req, res) {
     try {
