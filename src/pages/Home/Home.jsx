@@ -57,9 +57,9 @@ export default function Home({ loggedInUser, handleLogout }) {
     }
 
     // This is the function that will delete a game and every task attached to it
-    async function handleDeleteGame(game) {
+    async function handleDeleteGame(gameId) {
         try {
-            const response = await gamesAPI.deleteGame(game);
+            const response = await gamesAPI.deleteGame(gameId);
             console.log(response);
             getGames();
         } catch (err) {

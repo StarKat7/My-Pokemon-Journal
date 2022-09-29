@@ -11,5 +11,7 @@ const gamesCtrl = require('../../controllers/games');
 router.post('/', gamesCtrl.create); 
 // And hitting this one calls the userGames function
 router.get('/', gamesCtrl.userGames);
+// Hitting this calls the deleteGame function
+router.delete('/:id', gamesCtrl.deleteGame)
 
 module.exports = router;

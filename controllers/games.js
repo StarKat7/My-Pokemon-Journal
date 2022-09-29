@@ -3,7 +3,17 @@ const User = require("../models/user");
 
 module.exports = {
     create,
-    userGames
+    userGames,
+    deleteGame
+}
+
+async function deleteGame(req, res) {
+  console.log("Arrived at the deleteGame controller")
+  try {
+
+  } catch (err) {
+    
+  }
 }
 
 async function userGames(req, res) {

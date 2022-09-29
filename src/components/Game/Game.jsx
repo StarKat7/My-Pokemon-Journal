@@ -10,7 +10,7 @@ export default function GameComponent({ game, handleAddTask, taskDone, handleDel
 
     function handleSubmit(e) {
         e.preventDefault();
-        const request = game;
+        const request = game._id;
         handleDeleteGame(request);
     }
 
