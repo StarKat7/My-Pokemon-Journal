@@ -51,6 +51,7 @@ export default function AddGame({ handleAddGame }) {
         // Put the handleAddGame here, may define in a parent and pass it down
         // Actually yeah I need the Home page to rerender when the game is added so define handleAddGame() above and then pass it down to here
         handleAddGame(requestData); // This is what gets sent over to the server, remember that handleAddGame is calling a function from the gamesAPI util
+        setOpen(false);
         setGameForm({
             title: "",
             coverUrl: "",
@@ -97,7 +98,7 @@ export default function AddGame({ handleAddGame }) {
                         placeholder="Platform"
                         onChange={handleChange}
                     />
-                    <Button type="submit" className="btn" onClick={() => setOpen(false)}>Add Game</Button>
+                    <Button type="submit" className="btn">Add Game</Button>
                 </Form>
                     </Modal.Description>
                 </Modal.Content>
