@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "semantic-ui-react";
 import GameComponent from "../Game/Game";
 
-export default function GameGallery({ games, itemsPerRow, handleAddTask, taskDone }) {
+export default function GameGallery({ games, itemsPerRow, handleAddTask, taskDone, handleDeleteGame }) {
     return (
         <>
             <Card.Group itemsPerRow={itemsPerRow} stackable>
@@ -12,6 +12,7 @@ export default function GameGallery({ games, itemsPerRow, handleAddTask, taskDon
                             <GameComponent
                                 game={game}
                                 key={game._id}
+                                handleDeleteGame={handleDeleteGame}
                                 handleAddTask={handleAddTask}
                                 taskDone={taskDone}
                             />

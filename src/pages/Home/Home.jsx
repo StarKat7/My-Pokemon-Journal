@@ -56,6 +56,17 @@ export default function Home({ loggedInUser, handleLogout }) {
         }
     }
 
+    // This is the function that will delete a game and every task attached to it
+    async function handleDeleteGame(game) {
+        try {
+            const response = await gamesAPI.deleteGame(game);
+            console.log(response);
+            getGames();
+        } catch (err) {
+            console.log("Error in the handleDeleteGame function");
+        }
+    }
+
     // This is for adding Tasks
     async function handleAddTask(task) {
         try {
@@ -96,6 +107,7 @@ export default function Home({ loggedInUser, handleLogout }) {
                     <Grid.Column style={{ maxWidth: 750 }}>
                         <GameGallery
                             games={games}
+                            handleDeleteGame={handleDeleteGame}
                             handleAddTask={handleAddTask}
                             taskDone={taskDone}
                             itemsPerRow={3} />

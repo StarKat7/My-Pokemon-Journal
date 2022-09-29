@@ -3,11 +3,15 @@ import { Card, Image, Modal, Header, Button, Segment } from "semantic-ui-react";
 import AddTask from "../AddTask/AddTask";
 import TaskDisplay from "../TaskDisplay/TaskDisplay";
 
-export default function GameComponent({ game, handleAddTask, taskDone }) {
+export default function GameComponent({ game, handleAddTask, taskDone, handleDeleteGame }) {
 
     // ------------- States -------------
     const [open, setOpen] = useState(false);
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        handleDeleteGame(game);
+    }
 
     return (
         <Card >
@@ -18,8 +22,11 @@ export default function GameComponent({ game, handleAddTask, taskDone }) {
                 trigger={<Button size="large">{game.gameTitle}</Button>}
             >
                 <Modal.Header centered>{game.gameTitle} Details</Modal.Header>
-                <Modal.Content image>
+                <Modal.Content image scrolling>
                     <Modal.Description>
+                        <Form onSubmit={handleSubmit}>
+                            <Button type="submit" onClick={() => setOpen(false)} color="red">Delete</Button>
+                        </Form>
                         <Segment textAlign="center">
                             <Image centered src={game.coverUrl} />
                             <p>Generation {game.gen}</p>
