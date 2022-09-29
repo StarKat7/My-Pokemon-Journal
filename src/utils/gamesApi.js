@@ -22,8 +22,19 @@ export function create(game) {
     });
 }
 
-export function deleteGame(game) {
-
+export function deleteGame(gameId) {
+    return fetch(`${BASE_URL}/${gameId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: "Bearer " + tokenService.getToken(),
+        }
+    }).then((res) => {
+        if (res.ok) return res.json();
+        
+        console.log("Something's wrong in gamesApi")
+        throw new Error(res.error);
+    })
 }
 
 export function getGames() {

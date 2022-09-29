@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Image, Modal, Header, Button, Segment } from "semantic-ui-react";
+import { Card, Image, Modal, Form, Button, Segment } from "semantic-ui-react";
 import AddTask from "../AddTask/AddTask";
 import TaskDisplay from "../TaskDisplay/TaskDisplay";
 
@@ -10,7 +10,10 @@ export default function GameComponent({ game, handleAddTask, taskDone, handleDel
 
     function handleSubmit(e) {
         e.preventDefault();
-        handleDeleteGame(game);
+        const request = game._id;
+        console.log(request, "<- the deleteGame request")
+        handleDeleteGame(request);
+        setOpen(false)
     }
 
     return (
@@ -24,9 +27,10 @@ export default function GameComponent({ game, handleAddTask, taskDone, handleDel
                 <Modal.Header centered>{game.gameTitle} Details</Modal.Header>
                 <Modal.Content image scrolling>
                     <Modal.Description>
-                        
-                            <Button type="submit" onClick={() => setOpen(false)} color="red">Delete</Button>
-                        
+
+                            <Form onSubmit={handleSubmit}>
+                            <Button type="submit" color="red">Delete</Button>
+                            </Form>
                         <Segment textAlign="center">
                             <Image centered src={game.coverUrl} />
                             <p>Generation {game.gen}</p>
