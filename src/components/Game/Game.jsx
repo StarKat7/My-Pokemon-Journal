@@ -21,12 +21,12 @@ export default function GameComponent({ game, handleAddTask, taskDone, handleDel
 
     // ------------- The Return -------------
     return (
-        <Card >
+        <Card color="grey">
             <Modal
                 onClose={() => setOpen(false)}
                 onOpen={() => setOpen(true)}
                 open={open}
-                trigger={<Button size="large">{game.gameTitle}</Button>}
+                trigger={<Button size="large" color="violet">{game.gameTitle}</Button>}
             >
                 <Modal.Header>{game.gameTitle} Details
                 </Modal.Header>
@@ -57,7 +57,7 @@ export default function GameComponent({ game, handleAddTask, taskDone, handleDel
                     </Button>
                 </Modal.Actions>
             </Modal>
-            <Card.Content textAlign="center">
+            <Card.Content textAlign="center" color="grey">
                 <Image src={game.coverUrl} />
                 <p>Generation {game.gen}</p>
                 <p>Platform: {game.platform}</p>

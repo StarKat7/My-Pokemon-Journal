@@ -97,6 +97,12 @@ export default function Home({ handleLogout }) {
         }
     }
 
+
+    // ------------- className Variables -------------
+    const modalHeader = "modalHeader"
+    const headerText = "headerText"
+
+
     // ------------- The Return -------------
     return (
         <Container>
@@ -104,7 +110,7 @@ export default function Home({ handleLogout }) {
                 {`html, body {
                     background-image: linear-gradient(to right top, #a48dc0, #819cd0, #5caad0, #4eb4c2, #64baaa);
 
-                    Header {
+                    #modalHeader {
                         color: #7848C6
                     }
                 }`}
@@ -125,7 +131,8 @@ export default function Home({ handleLogout }) {
                             handleAddTask={handleAddTask}
                             handleDeleteTask={handleDeleteTask}
                             taskDone={taskDone}
-                            itemsPerRow={3} />
+                            itemsPerRow={3}
+                            />
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

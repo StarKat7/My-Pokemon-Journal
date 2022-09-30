@@ -79,7 +79,7 @@ export default function AddGame({ handleAddGame }) {
                 onClose={() => setOpen(false)}
                 onOpen={() => setOpen(true)}
                 open={open}
-                trigger={<Button size="large">Add New Game</Button>}
+                trigger={<Button size="large" color="violet">Add New Game</Button>}
             >
                 <Modal.Header>Add Game</Modal.Header>
                 <Modal.Content>

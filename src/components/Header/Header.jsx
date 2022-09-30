@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Header, Segment, Icon } from "semantic-ui-react";
+import { Header, Segment } from "semantic-ui-react";
 
 export default function PageHeader({ handleLogout }) {
 
@@ -9,11 +9,11 @@ export default function PageHeader({ handleLogout }) {
     <Segment clearing>
       <Header as="h2" floated="left">
         <Link to="/">
-          <Icon name="home" color="purple"></Icon>
+          My Pokemon Journal
         </Link>
-        My Pokemon Journal
+
       </Header>
-      <Header as="h2" floated="right" color="purple">
+      <Header as="h2" floated="right" color="violet">
         <Link to="" onClick={handleLogout} >
           Logout
         </Link>
