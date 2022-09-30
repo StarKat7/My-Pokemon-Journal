@@ -6,7 +6,7 @@ import GameGallery from "../../components/GameGallery/GameGallery";
 import * as gamesAPI from "../../utils/gamesApi";
 import * as tasksAPI from "../../utils/tasksApi";
 
-export default function Home({ loggedInUser, handleLogout }) {
+export default function Home({ handleLogout }) {
 
     // ------------- States -------------
     const [games, setGames] = useState([]);
@@ -100,7 +100,7 @@ export default function Home({ loggedInUser, handleLogout }) {
     // ------------- The Return -------------
     return (
         <>
-            <PageHeader loggedInUser={loggedInUser} handleLogout={handleLogout} />
+            <PageHeader handleLogout={handleLogout} />
             <Header as="h1" textAlign="center">My Games</Header>
             <Divider inverted />
             <Grid>

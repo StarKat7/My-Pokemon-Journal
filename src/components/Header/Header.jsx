@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Header, Segment, Icon } from "semantic-ui-react";
 
-export default function PageHeader({ loggedUser, handleLogout }) {
+export default function PageHeader({ handleLogout }) {
 
   // ------------- The Return -------------
   return (

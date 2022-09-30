@@ -31,7 +31,6 @@ export default function AddGame({ handleAddGame }) {
     // AddGame will be a form that is rendered on the Home page, accordian so it only pops out when the user needs it.
 
     // ------------- States -------------
-    const [dropdownGame, setDropdownGame] = useState({})
     const [gameForm, setGameForm] = useState({
         title: "",
         coverUrl: "",
