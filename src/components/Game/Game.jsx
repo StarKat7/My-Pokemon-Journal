@@ -28,14 +28,14 @@ export default function GameComponent({ game, handleAddTask, taskDone, handleDel
                 open={open}
                 trigger={<Button size="large">{game.gameTitle}</Button>}
             >
-                <Modal.Header centered>{game.gameTitle} Details
+                <Modal.Header centered="true">{game.gameTitle} Details
                 </Modal.Header>
                 <Modal.Content image scrolling>
                     <Modal.Description>
 
 
                         <Segment textAlign="center">
-                            <Image centered src={game.coverUrl} />
+                            <Image centered="true" src={game.coverUrl} />
                             <p>Generation {game.gen}</p>
                             <p>Platform: {game.platform}</p>
                         </Segment>
