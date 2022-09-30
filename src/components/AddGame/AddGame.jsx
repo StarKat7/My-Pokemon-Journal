@@ -51,7 +51,7 @@ export default function AddGame({ handleAddGame }) {
     function handleClose(e, data) {
         // So I think I can use .find() to use the option's name to find the availableGame with the corresponding name? Then set the state... Let's give it a try.
         const selectedGame = availableGames.find(({title}) => title === data.value);
-        console.log(selectedGame);
+        // console.log(selectedGame);
         // Okay successfully grabbed the game from the availableGames array...
         setGameForm(selectedGame);
         // IT WORKED??
