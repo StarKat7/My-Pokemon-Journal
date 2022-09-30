@@ -1,5 +1,21 @@
 import React, { useState } from "react";
-import { Form, Button, Header, Segment } from "semantic-ui-react";
+import { Form, Button, Header, Segment, Dropdown } from "semantic-ui-react";
+
+
+// Task info for state change
+const availableTasks = [
+    { title: "Champion", description: "Defeat the Pokemon League and become the Champion"},
+    { title: "Cover Legendary", description: "Catch the cover legendary of the game"},
+    { title: "Gym Challenge", description: "Defeat all 8 Gyms"}
+]
+
+// Options for the dropdown
+const taskOptions = [
+    { key: "Champion", text: "Champion", value: "Champion"},
+    { key: "Legendary", text: "Cover Legendary", value: "Cover Legendary"},
+    { key: "Gyms", text: "Gym Challenge", value: "Gym Challenge"}
+]
+
 
 export default function AddTask({ game, handleAddTask }) {
     // console.log(game, " game object in AddTask")
@@ -28,6 +44,15 @@ export default function AddTask({ game, handleAddTask }) {
         });
     }
 
+    function handleClose(e, data) {
+        // So I think I can use .find() to use the option's name to find the availableGame with the corresponding name? Then set the state... Let's give it a try.
+        const selectedTask = availableTasks.find(({title}) => title === data.value);
+        // Okay successfully grabbed the game from the availableGames array...
+        setTaskForm({...taskForm, title: selectedTask.title, description: selectedTask.description});
+        console.log(taskForm)
+        // IT WORKED??
+    }
+
     function handleSubmit(e) {
         e.preventDefault();
         const requestData = taskForm;
@@ -43,12 +68,21 @@ export default function AddTask({ game, handleAddTask }) {
             done: false
         })
     }
+
     
+
 
     // ------------- The Return -------------
     return (
         <Segment>
             <Header>Add a Task for {gameTitle}</Header>
+            <Dropdown
+                placeholder="Select Default Task"
+                fluid
+                selection
+                options={taskOptions}
+                onChange={handleClose}
+            />
             <Form onSubmit={handleSubmit}>
                 <Form.Input
                     name="title"
