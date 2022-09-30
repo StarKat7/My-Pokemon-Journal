@@ -35,7 +35,7 @@ export default function GameComponent({ game, handleAddTask, taskDone, handleDel
 
 
                         <Segment textAlign="center">
-                            <Image centered="true" src={game.coverUrl} />
+                            <Image centered={true} src={game.coverUrl} />
                             <p>Generation {game.gen}</p>
                             <p>Platform: {game.platform}</p>
                         </Segment>
