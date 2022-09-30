@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PageHeader from "../../components/Header/Header";
-import { Header, Divider, Grid } from "semantic-ui-react"
+import { Header, Divider, Grid, Container } from "semantic-ui-react"
 import AddGame from "../../components/AddGame/AddGame";
 import GameGallery from "../../components/GameGallery/GameGallery";
 import * as gamesAPI from "../../utils/gamesApi";
@@ -99,7 +99,16 @@ export default function Home({ handleLogout }) {
 
     // ------------- The Return -------------
     return (
-        <>
+        <Container>
+            <style>
+                {`html, body {
+                    background-image: linear-gradient(to right top, #a48dc0, #819cd0, #5caad0, #4eb4c2, #64baaa);
+
+                    Header {
+                        color: #7848C6
+                    }
+                }`}
+            </style>
             <PageHeader handleLogout={handleLogout} />
             <Header as="h1" textAlign="center">My Games</Header>
             <Divider inverted />
@@ -120,6 +129,6 @@ export default function Home({ handleLogout }) {
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
-        </>
+        </Container>
     )
 }
