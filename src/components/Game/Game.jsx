@@ -28,17 +28,18 @@ export default function GameComponent({ game, handleAddTask, taskDone, handleDel
                 open={open}
                 trigger={<Button size="large">{game.gameTitle}</Button>}
             >
-                <Modal.Header centered="true">{game.gameTitle} Details
+                <Modal.Header>{game.gameTitle} Details
                 </Modal.Header>
                 <Modal.Content image scrolling>
                     <Modal.Description>
-
-
                         <Segment textAlign="center">
                             <Image centered={true} src={game.coverUrl} />
                             <p>Generation {game.gen}</p>
                             <p>Platform: {game.platform}</p>
                         </Segment>
+                        <Form onSubmit={handleSubmit} >
+                            <Button type="submit" color="red">Delete Game</Button>
+                        </Form>
                         <TaskDisplay
                             game={game}
                             taskDone={taskDone}
@@ -48,9 +49,6 @@ export default function GameComponent({ game, handleAddTask, taskDone, handleDel
                             game={game}
                             handleAddTask={handleAddTask}
                         />
-                        <Form onSubmit={handleSubmit} >
-                            <Button type="submit" color="red">Delete Game</Button>
-                        </Form>
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
