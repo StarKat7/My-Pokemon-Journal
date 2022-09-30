@@ -11,6 +11,7 @@ export default function PageHeader({ handleLogout }) {
         <Link to="/">
           <Icon name="home" color="purple"></Icon>
         </Link>
+        My Pokemon Journal
       </Header>
       <Header as="h2" floated="right" color="purple">
         <Link to="" onClick={handleLogout} >

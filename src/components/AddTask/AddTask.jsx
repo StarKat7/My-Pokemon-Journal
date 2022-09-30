@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button, Header, Segment, Dropdown } from "semantic-ui-react";
+import { Form, Button, Header, Segment, Dropdown, Divider } from "semantic-ui-react";
 
 
 // Task info for state change
@@ -77,12 +77,13 @@ export default function AddTask({ game, handleAddTask }) {
         <Segment>
             <Header>Add a Task for {gameTitle}</Header>
             <Dropdown
-                placeholder="Select Default Task"
+                placeholder="Select a Default Task if you need a little inspiration"
                 fluid
                 selection
                 options={taskOptions}
                 onChange={handleClose}
             />
+            <Divider inverted />
             <Form onSubmit={handleSubmit}>
                 <Form.Input
                     name="title"
