@@ -47,9 +47,6 @@ export default function SignUpPage({ handleSignUpOrLogin }) {
     for (let key in state) {
       formData.append(key, state[key]);
     }
-    console.log("Checking formData...",
-      formData.forEach((item) => console.log(item))
-    );
     try {
       await userService.signup(formData);
       handleSignUpOrLogin();
