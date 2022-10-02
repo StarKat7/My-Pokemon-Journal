@@ -97,7 +97,7 @@ export default function AddTask({ game, handleAddTask }) {
                     placeholder="Description"
                     onChange={handleChange}
                 />
-                <Button type="submit" className="btn">Add Task</Button>
+                <Button type="submit" className="btn" color="violet">Add Task</Button>
             </Form>
         </Segment>
     )
