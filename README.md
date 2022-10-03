@@ -22,7 +22,7 @@ Collecting Pokemon(and the games they're in) is loads of fun, but you can't play
 
 ## Next Steps
 * Sort game list by generation
-* Allow tasks all together, outside of the games they're attached to
+* Allow tasks to be shown all together, outside of the games they're attached to
 * Add Shiny Journal to the app, which will allow users to track shiny hunts across all games
 * Notes feature, for notes/reminders that aren't attached to any particular game
 * Add specialized features for main series games and non-main series games
