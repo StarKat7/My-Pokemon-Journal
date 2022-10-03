@@ -6,8 +6,6 @@ export default function Task({ task, taskDone, handleDeleteTask }) {
     // ------------- States -------------
     const [thisTask, setThisTask] = useState(task);
 
-    console.log("looking at thisTask in the Task Component", thisTask);
-
 
     // ------------- Handlers -------------
     function handleClick() {
@@ -20,7 +18,6 @@ export default function Task({ task, taskDone, handleDeleteTask }) {
     function handleMark(e) {
         e.preventDefault();
         const responseData = thisTask;
-        console.log("Looking at responseData after button click", responseData)
         taskDone(responseData);
     }
 

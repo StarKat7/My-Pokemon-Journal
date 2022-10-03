@@ -11,7 +11,7 @@ function isPasswordMatch(passwordOne, passwordConf) {
 
 export default function SignUpPage({ handleSignUpOrLogin }) {
 
-  // ------------- State Stuff -------------
+  // ------------- States -------------
   const [error, setError] = useState({
     message: "",
     passwordError: false

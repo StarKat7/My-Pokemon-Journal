@@ -13,7 +13,6 @@ export default function GameComponent({ game, handleAddTask, taskDone, handleDel
     function handleSubmit(e) {
         e.preventDefault();
         const request = game._id;
-        console.log(request, "<- the deleteGame request")
         handleDeleteGame(request);
         setOpen(false)
     }

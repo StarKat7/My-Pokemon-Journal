@@ -20,7 +20,6 @@ export default function Home({ handleLogout }) {
     async function getGames() {
         try {
             const response = await gamesAPI.getGames(); // Initiating the GET request, on to gamesApi in utils for the fetch part
-            console.log(response, "<- the data");
             // And we're back wih the data from the fetch
             setGames([...response.data]);
         } catch (err) {
@@ -42,7 +41,6 @@ export default function Home({ handleLogout }) {
         try {
             const response = await gamesAPI.create(game); // Here we make the API call, head over to utils/gamesApi to see what happens next
             // If it comes back successfully we then use setGames with the new response.data at the top
-            console.log(response);
             getGames();
             // And we turn off loading
         } catch (err) {
@@ -54,7 +52,6 @@ export default function Home({ handleLogout }) {
     async function handleDeleteGame(gameId) {
         try {
             const response = await gamesAPI.deleteGame(gameId);
-            console.log(response);
             getGames();
         } catch (err) {
             console.log("Error in the handleDeleteGame function");
@@ -66,7 +63,6 @@ export default function Home({ handleLogout }) {
         try {
             const response = await tasksAPI.create(task); // Go to utils/tasksApi to see what happens next
             // If it comes back successfully we then use setTasks with the new response.data at the top
-            console.log(response);
             setTasks([response.data, ...tasks]);
             getGames();
         } catch (err) {
@@ -89,7 +85,6 @@ export default function Home({ handleLogout }) {
     async function taskDone(task) {
         try {
             const response = await tasksAPI.markDone(task);
-            console.log(response);
             setTasks([response.data]);
             getGames();
         } catch (err) {
@@ -132,7 +127,7 @@ export default function Home({ handleLogout }) {
                             handleDeleteTask={handleDeleteTask}
                             taskDone={taskDone}
                             itemsPerRow={3}
-                            />
+                        />
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

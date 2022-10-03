@@ -14,7 +14,7 @@ import {
 
 export default function LoginPage(props) {
 
-  // ------------- State Stuff -------------
+  // ------------- States -------------
   const [error, setError] = useState("");
   const [state, setState] = useState({
     email: "",
@@ -33,7 +33,6 @@ export default function LoginPage(props) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     try {
       await userService.login(state);
       props.handleSignUpOrLogin();

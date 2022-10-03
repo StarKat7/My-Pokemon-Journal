@@ -9,15 +9,12 @@ module.exports = {
 }
 
 async function deleteGame(req, res) {
-  console.log("Arrived at the deleteGame controller")
   try {
     // So I have to delete all the tasks that have the game's ID in them...
     await Task.deleteMany({ game: req.params.id });
-    console.log("Tasks were deleted");
     // And then delete the game itself
     await Game.findOneAndDelete({ _id: req.params.id });
-    console.log("Game was deleted")
-    res.json({data: "Game and tasks were removed"})
+    res.json({ data: "Game and tasks were removed" })
   } catch (err) {
     console.log("Something went wrong in the deleteGame controller")
     res.status(400).json({ error: err })
@@ -27,8 +24,6 @@ async function deleteGame(req, res) {
 async function userGames(req, res) {
   try {
     // So to get the logged-in user I use req.user._id?
-    //   const user = await User.findOne({ user: req.user._id });
-    //   if (!user) return res.status(404).json({ error: "Something's gone wrong in userGames, check it in controllers/users.js" })
     // Now I find the user's games...
     // I put user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'} in the Game model so that should apply here
     const games = await Game.find({ user: req.user._id }).populate("tasksToDo").populate("tasksDone").exec();

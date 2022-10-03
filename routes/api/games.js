@@ -8,10 +8,10 @@ const gamesCtrl = require('../../controllers/games');
 
 /*---------- Protected Routes ----------*/
 // Hitting this route calls the create function over in controllers/games
-router.post('/', gamesCtrl.create); 
+router.post('/', gamesCtrl.create);
 // And hitting this one calls the userGames function
 router.get('/', gamesCtrl.userGames);
 // Hitting this calls the deleteGame function
-router.delete('/:id', gamesCtrl.deleteGame)
+router.delete('/:id', gamesCtrl.deleteGame);
 
 module.exports = router;
