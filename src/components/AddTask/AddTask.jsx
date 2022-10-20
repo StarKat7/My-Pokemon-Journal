@@ -6,14 +6,18 @@ import { Form, Button, Header, Segment, Dropdown, Divider } from "semantic-ui-re
 const availableTasks = [
     { title: "Champion", description: "Defeat the Pokemon League and become the Champion" },
     { title: "Cover Legendary", description: "Catch the cover legendary of the game" },
-    { title: "Gym Challenge", description: "Defeat all 8 Gyms" }
+    { title: "Gym Challenge", description: "Defeat all 8 Gyms" },
+    { title: "Regional Dex", description: "Complete the Regional Dex" },
+    { title: "Shiny Charm", description: "Acquire the Shiny Charm"}
 ]
 
 // Options for the dropdown
 const taskOptions = [
     { key: "Champion", text: "Champion", value: "Champion" },
     { key: "Legendary", text: "Cover Legendary", value: "Cover Legendary" },
-    { key: "Gyms", text: "Gym Challenge", value: "Gym Challenge" }
+    { key: "Gyms", text: "Gym Challenge", value: "Gym Challenge" },
+    { key: "RegionDex", text: "Regional Dex", value: "Regional Dex" },
+    { key: "ShinyCharm", text: "Shiny Charm", value: "Shiny Charm"}
 ]
 
 
