@@ -5,6 +5,7 @@ import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import GamePage from "../GamePage/GamePage";
 import Home from "../Home/Home";
+import Shinies from "../Shinies/ShiniesPage";
 import userService from "../../utils/userService";
 
 function App() {
@@ -28,6 +29,10 @@ function App() {
         <Route
           path="/"
           element={<Home loggedInUser={user} handleLogout={handleLogout} />} />
+        <Route
+          path="/shinies"
+          element={<Shinies loggedInUser={user} handleLogout={handleLogout} />}
+        Route/>
         <Route
           path="/:_id"
           element={<GamePage loggedInUser={user} handleLogout={handleLogout} />} />
