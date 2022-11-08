@@ -66,7 +66,7 @@ export default function AddPokemon() {
                         />
                         <Button onClick={handleGrab}>Find Pokemon!</Button>
                     </Form>
-                    <Image src={shinyPic}/>
+                    <Image centered src={shinyPic}/>
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>

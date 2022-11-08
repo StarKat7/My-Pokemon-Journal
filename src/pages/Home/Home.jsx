@@ -6,10 +6,10 @@ import GameGallery from "../../components/GameGallery/GameGallery";
 import * as gamesAPI from "../../utils/gamesApi";
 import * as tasksAPI from "../../utils/tasksApi";
 
-export default function Home({ handleLogout }) {
+export default function Home({ handleLogout, getGames, games }) {
 
     // ------------- States -------------
-    const [games, setGames] = useState([]);
+    // const [games, setGames] = useState([]);
     const [tasks, setTasks] = useState([]);
 
 
@@ -17,15 +17,15 @@ export default function Home({ handleLogout }) {
     // This needs to render upon mount, and then render again whenever a new game is added by the user. This will be covering the R in CRUD
 
     // This is the getGames function that will be used by the useEffect
-    async function getGames() {
-        try {
-            const response = await gamesAPI.getGames(); // Initiating the GET request, on to gamesApi in utils for the fetch part
-            // And we're back wih the data from the fetch
-            setGames([...response.data]);
-        } catch (err) {
-            console.log(err.message, "Issues in getGames");
-        }
-    }
+    // async function getGames() {
+    //     try {
+    //         const response = await gamesAPI.getGames(); // Initiating the GET request, on to gamesApi in utils for the fetch part
+    //         // And we're back wih the data from the fetch
+    //         setGames([...response.data]);
+    //     } catch (err) {
+    //         console.log(err.message, "Issues in getGames");
+    //     }
+    // }
     // Okay this is working now there was an aws thing that was getting in the way?? Now I need to give the games to the childe components that need them
 
     // Here's the useEffect
