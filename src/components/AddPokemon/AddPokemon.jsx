@@ -9,6 +9,7 @@ export default function AddPokemon() {
     const [pokemon, setPokemon] = useState('');
     const [newShiny, setNewShiny] = useState({}); // This is where the PokeAPI call's data will be stored prior to confirmation from the user
 
+    console.log(newShiny)
 
     function grabAShiny() {
         return fetch('https://pokeapi.co/api/v2/pokemon/' + pokemon)
@@ -28,9 +29,15 @@ export default function AddPokemon() {
     }
 
     // This function is going to do the fetch call for whatever Pokemon the user types in
-    function handleGrab(e) {
+    async function handleGrab(e) {
         e.preventDefault();
-        grabAShiny()
+        try {
+            const aShiny = await grabAShiny();
+            setNewShiny(aShiny)
+        }
+        catch (err) {
+            console.log("Error in the grabshiny handler")
+        }
     }
 
     return (
