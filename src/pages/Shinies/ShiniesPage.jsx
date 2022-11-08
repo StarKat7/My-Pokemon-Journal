@@ -9,7 +9,7 @@ import PageHeader from "../../components/Header/Header";
 // Get Pokemon data and shiny pictures from PokeAPI, this will give nice consistency
 // Various states store the shinies sorted in different ways, such as by acquired/not, by game, by national dex number, alphebetized, etc.
 
-export default function Shinies({ handleLogout, getGames }) {
+export default function Shinies({ handleLogout, getGames, games }) {
 
     // ------------- States -------------
     const [shinies, setShinies] = useState([]); // This stores ALL the shinies belonging to the user

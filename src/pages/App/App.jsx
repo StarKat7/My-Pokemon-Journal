@@ -43,7 +43,7 @@ function App() {
           element={<Home loggedInUser={user} handleLogout={handleLogout} getGames={getGames} games={games} />} />
         <Route
           path="/shinies"
-          element={<Shinies loggedInUser={user} handleLogout={handleLogout} getGames={getGames} />}
+          element={<Shinies loggedInUser={user} handleLogout={handleLogout} getGames={getGames} games={games} />}
         Route/>
         <Route
           path="/:_id"
