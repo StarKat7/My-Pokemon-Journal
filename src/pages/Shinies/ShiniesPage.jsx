@@ -2,13 +2,17 @@ import React, { useEffect, useState } from "react";
 import { Container } from "semantic-ui-react";
 import AddPokemon from "../../components/AddPokemon/AddPokemon";
 
+// This page will have several buttons, one will show the Pokemon the player is hunting when clicked, another will show the Pokemon the player has acquired when clicked.
+// First all the shinies belonging to the player are fetched from the database, then they can be sorted by acquired or not and by game. Acquired or not is determined by a boolean. Shinies can be sorted into states that are then used in page display.
+// Get Pokemon data and shiny pictures from PokeAPI, this will give nice consistency
+// Various states store the shinies sorted in different ways, such as by acquired/not, by game, by national dex number, alphebetized, etc.
+
 export default function Shinies() {
 
     // ------------- States -------------
     const [shinies, setShinies] = useState([]); // This stores ALL the shinies belonging to the user
     const [acquired, setAcquired] = useState([]); // This stores all acquired shinies belonging to the user
     const [hunt, setHunt] = useState([]); // This stores all shinies the user is still hunting
-    const [newShiny, setNewShiny] = useState({}); // This is where the PokeAPI call's data will be stored prior to confirmation from the user
 
     // async function getShinies() {
     //     try {
