@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "semantic-ui-react";
 import AddPokemon from "../../components/AddPokemon/AddPokemon";
+import PokemonGallery from "../../components/PokemonGallery/PokemonGallery";
 
 // This page will have several buttons, one will show the Pokemon the player is hunting when clicked, another will show the Pokemon the player has acquired when clicked.
 // First all the shinies belonging to the player are fetched from the database, then they can be sorted by acquired or not and by game. Acquired or not is determined by a boolean. Shinies can be sorted into states that are then used in page display.
@@ -44,6 +45,7 @@ export default function Shinies() {
             </style>
             <div>Hello there</div>
             <AddPokemon />
+            <PokemonGallery />
         </Container>
     )
 }
