@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "semantic-ui-react";
+import { Header, Divider, Grid, Container } from "semantic-ui-react"
 import AddPokemon from "../../components/AddPokemon/AddPokemon";
 import PokemonGallery from "../../components/PokemonGallery/PokemonGallery";
+import PageHeader from "../../components/Header/Header";
 
 // This page will have several buttons, one will show the Pokemon the player is hunting when clicked, another will show the Pokemon the player has acquired when clicked.
 // First all the shinies belonging to the player are fetched from the database, then they can be sorted by acquired or not and by game. Acquired or not is determined by a boolean. Shinies can be sorted into states that are then used in page display.
 // Get Pokemon data and shiny pictures from PokeAPI, this will give nice consistency
 // Various states store the shinies sorted in different ways, such as by acquired/not, by game, by national dex number, alphebetized, etc.
 
-export default function Shinies() {
+export default function Shinies({ handleLogout }) {
 
     // ------------- States -------------
     const [shinies, setShinies] = useState([]); // This stores ALL the shinies belonging to the user
@@ -30,7 +31,7 @@ export default function Shinies() {
     //     // Getting the games, C(R)UD
     //     getShinies();
     // }, []);
-    
+
 
     return (
         <Container>
@@ -43,9 +44,15 @@ export default function Shinies() {
                     }
                 }`}
             </style>
-            <div>Hello there</div>
-            <AddPokemon />
-            <PokemonGallery />
+            <PageHeader handleLogout={handleLogout} />
+            <Grid>
+                <Grid.Row centered>
+                    <AddPokemon />
+                </Grid.Row>
+                <Grid.Row centered>
+                    <PokemonGallery />
+                </Grid.Row>
+            </Grid>
         </Container>
     )
 }

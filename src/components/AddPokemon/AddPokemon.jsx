@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Card, Image, Modal, Dropdown, Form, Button, Divider } from "semantic-ui-react";
 
 export default function AddPokemon() {
@@ -7,17 +7,10 @@ export default function AddPokemon() {
     // I'm going to need a function that prepares multi-word Pokemon for the fetch call by replacing white space with dashes. There's also the issue that for some Pokemon just their name isn't enough--for example Giratina must have either origin or altered attached to its name because it has two forms. 
 
     // ------------- States -------------
-    const [pokemon, setPokemon] = useState('');
+    const [pokemon, setPokemon] = useState(''); // This stores the Pokemon search
     const [newShiny, setNewShiny] = useState({}); // This is where the PokeAPI call's data will be stored prior to confirmation from the user
-    const [shinyPic, setShinyPic] = useState("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/shiny/487.png")
-
-    console.log(newShiny)
-
-    // useEffect(() => {
-    //     // Getting the games, C(R)UD
-    //     const starter = grabAShiny()
-
-    // }, []); // So this will run once the AddPokemon component loads
+    const [shinyPic, setShinyPic] = useState("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/shiny/487.png") // This starts with a placeholder pic until the fetch call grabs a new shiny Pokemon 
+    const [open, setOpen] = useState(false); // For the modal
 
     function grabAShiny() {
         return fetch('https://pokeapi.co/api/v2/pokemon/' + pokemon)
@@ -31,16 +24,9 @@ export default function AddPokemon() {
             })
     }
 
-    // async function loadShiny() {
-    //     try {
-    //         setPokemon("pikachu")
-    //         const aShiny = await grabAShiny()
-    //         setNewShiny(aShiny)
-    //         setPokemon("")
-    //     } catch (err) {
-    //         console.log("Error in the loadShiny handler")
-    //     }
-    // }
+    function prepareShiny() {
+
+    }
 
     // ------------- Handlers -------------
     function handleChange(e) {
@@ -54,6 +40,7 @@ export default function AddPokemon() {
             const aShiny = await grabAShiny();
             setNewShiny(aShiny)
             setShinyPic(aShiny.sprites.other.home["front_shiny"])
+            console.log(newShiny)
         }
         catch (err) {
             console.log("Error in the grabshiny handler")
@@ -62,8 +49,15 @@ export default function AddPokemon() {
 
     return (
         <>
-            <Card>
-                <Card.Content>
+                    <Modal
+                onClose={() => setOpen(false)}
+                onOpen={() => setOpen(true)}
+                open={open}
+                trigger={<Button size="large" color="violet">Add New Shiny Pokemon</Button>}
+            >
+                <Modal.Header>Add Shiny Pokemon</Modal.Header>
+                <Modal.Content>
+                    <Modal.Description>
                     <Form>
                         <Form.Input
                             name="pokemon"
@@ -73,8 +67,16 @@ export default function AddPokemon() {
                         <Button onClick={handleGrab}>Find Pokemon!</Button>
                     </Form>
                     <Image src={shinyPic}/>
-                </Card.Content>
-            </Card>
+                    </Modal.Description>
+                </Modal.Content>
+                <Modal.Actions>
+                    <Button color='black' onClick={() => setOpen(false)}>
+                        Maybe Not...
+                    </Button>
+                </Modal.Actions>
+            </Modal>
+                
+            
         </>
     )
 }
