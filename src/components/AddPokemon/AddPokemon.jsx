@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { Card, Image, Modal, Dropdown, Form, Button, Divider } from "semantic-ui-react";
 
+// So for this component I want to send a fetch call to the PokeAPI when the user types in a Pokemon's name and hits a button, and then the response will be used to fill in the data for the Pokemon such as image url, location, etc.
+// I want to dynamically populate dropdowns for various pieces of info, such as location because most Pokemon have multiple locations where they can be found. Will also need a dropdown for the relevant game the Pokemon is in to be selected(from the games that the user has added). With this being the case, I'll probably have to pass down the user's game info as well so I can access the IDs of the games. After the user has selected the information to their liking, they hit a confirm button to save the Pokemon to the server.
+// I'm going to need a function that prepares multi-word Pokemon for the fetch call by replacing white space with dashes. There's also the issue that for some Pokemon just their name isn't enough--for example Giratina must have either origin or altered attached to its name because it has two forms. Will probably be the case with deoxys too...
+// Will need a dropdown for shiny methods, which won't need to be dictated by the fetch call because the PokeAPI doesn't track that sort of thing.
+// Would be nice to have an encounter counter that the user can update as they please, to keep track of how many times they've encountered a Pokemon.
+
+
 export default function AddPokemon({ games }) {
-    // So for this component I want to send a fetch call to the PokeAPI when the user types in a Pokemon's name and hits a button, and then the response will be used to fill in the data for the Pokemon such as image url, location, etc.
-    // I want to dynamically populate dropdowns for various pieces of info, such as location because most Pokemon have multiple locations where they can be found. Will also need a dropdown for the relevant game the Pokemon is in to be selected(from the games that the user has added). With this being the case, I'll probably have to pass down the user's game info as well so I can access the IDs of the games. After the user has selected the information to their liking, they hit a confirm button to save the Pokemon to the server.
-    // I'm going to need a function that prepares multi-word Pokemon for the fetch call by replacing white space with dashes. There's also the issue that for some Pokemon just their name isn't enough--for example Giratina must have either origin or altered attached to its name because it has two forms. 
 
     // ------------- States -------------
     const [pokemon, setPokemon] = useState(''); // This stores the Pokemon search

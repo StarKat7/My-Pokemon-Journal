@@ -8,6 +8,7 @@ const pokemonSchema = new mongoose.Schema({
     image: String,
     location: String,
     huntMethods: String,
+    counter: Number,
     notes: String
 })
 
