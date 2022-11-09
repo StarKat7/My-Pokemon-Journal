@@ -47,7 +47,7 @@ export default function Shinies({ handleLogout, getGames, games }) {
             <PageHeader handleLogout={handleLogout} />
             <Grid>
                 <Grid.Row centered>
-                    <AddPokemon />
+                    <AddPokemon games={games} />
                 </Grid.Row>
                 <Grid.Row centered>
                     <PokemonGallery />
