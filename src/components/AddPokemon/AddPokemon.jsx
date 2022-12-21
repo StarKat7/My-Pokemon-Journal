@@ -6,6 +6,7 @@ import { Card, Image, Modal, Dropdown, Form, Button, Divider } from "semantic-ui
 // I'm going to need a function that prepares multi-word Pokemon for the fetch call by replacing white space with dashes. There's also the issue that for some Pokemon just their name isn't enough--for example Giratina must have either origin or altered attached to its name because it has two forms. Will probably be the case with deoxys too...
 // Will need a dropdown for shiny methods, which won't need to be dictated by the fetch call because the PokeAPI doesn't track that sort of thing.
 // Would be nice to have an encounter counter that the user can update as they please, to keep track of how many times they've encountered a Pokemon.
+// I'm gonna need to have all the user's games available on the AddPokemon component so the user can attach the Pokemon to a game they're looking for it in.
 
 
 export default function AddPokemon({ games }) {
@@ -14,13 +15,14 @@ export default function AddPokemon({ games }) {
     const [pokemon, setPokemon] = useState(''); // This stores the Pokemon search
     const [newShiny, setNewShiny] = useState({}); // This is where the PokeAPI call's data will be stored prior to confirmation from the user
     const [pokemonLocation, setPokemonLocation] = useState({}); // This is where the second API call for the Pokemon's locations will be stored
-    const [shinyPic, setShinyPic] = useState("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/shiny/487.png") // This starts with a placeholder pic until the fetch call grabs a new shiny Pokemon 
+    const [shinyPic, setShinyPic] = useState("") // This starts with a placeholder pic until the fetch call grabs a new shiny Pokemon 
     const [confirmedPokemon, setConfirmedPokemon] = useState({
         name: "",
         acquired: false,
         image: "",
         location: "",
         huntMethods: "",
+        counter: 0,
         notes: ""
     }); // This stores the confirmed Pokemon that will then be saved to the server
     const [open, setOpen] = useState(false); // For the modal
@@ -76,6 +78,7 @@ export default function AddPokemon({ games }) {
         }
     }
 
+    if (shinyPic)
     return (
         <>
             <Modal
@@ -96,6 +99,38 @@ export default function AddPokemon({ games }) {
                             <Button onClick={handleGrab}>Find Pokemon!</Button>
                         </Form>
                         <Image centered src={shinyPic} />
+                    </Modal.Description>
+                </Modal.Content>
+                <Modal.Actions>
+                    <Button color='black' onClick={() => setOpen(false)}>
+                        Maybe Not...
+                    </Button>
+                </Modal.Actions>
+            </Modal>
+
+
+        </>
+    )
+
+    return (
+        <>
+            <Modal
+                onClose={() => setOpen(false)}
+                onOpen={() => setOpen(true)}
+                open={open}
+                trigger={<Button size="large" color="violet">Add New Shiny Pokemon</Button>}
+            >
+                <Modal.Header>Add Shiny Pokemon</Modal.Header>
+                <Modal.Content>
+                    <Modal.Description>
+                        <Form>
+                            <Form.Input
+                                name="pokemon"
+                                value={pokemon}
+                                onChange={handleChange}
+                            />
+                            <Button onClick={handleGrab}>Find Pokemon!</Button>
+                        </Form>
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
