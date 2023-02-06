@@ -7,6 +7,7 @@ import { Card, Image, Modal, Dropdown, Form, Button, Divider } from "semantic-ui
 // Will need a dropdown for shiny methods, which won't need to be dictated by the fetch call because the PokeAPI doesn't track that sort of thing.
 // Would be nice to have an encounter counter that the user can update as they please, to keep track of how many times they've encountered a Pokemon.
 // I'm gonna need to have all the user's games available on the AddPokemon component so the user can attach the Pokemon to a game they're looking for it in.
+// The PokeAPI hasn't added the new Gen 9 Pokemon yet, which means I need to add a modal where users can add Pokemon details manually without making a call to the API.
 
 
 export default function AddPokemon({ games }) {
@@ -87,7 +88,7 @@ export default function AddPokemon({ games }) {
                 open={open}
                 trigger={<Button size="large" color="violet">Add New Shiny Pokemon</Button>}
             >
-                <Modal.Header>Add Shiny Pokemon</Modal.Header>
+                <Modal.Header>Find Shiny Pokemon</Modal.Header>
                 <Modal.Content>
                     <Modal.Description>
                         <Form>
